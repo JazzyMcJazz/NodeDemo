@@ -1,0 +1,8 @@
+HTTP METHOD     ENDPOINT            DESC
+
+GET             /groceries          get all resources
+GET             /groceries/{id}     get a specific resource
+POST            /groceries          create a new resource
+PUT             /groceries/{id}     edit a resource
+PATCH           /groceries/{id}     edit part of a resource
+DELETE          /groceries/{id}     delete a resource
