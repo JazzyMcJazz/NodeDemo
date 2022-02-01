@@ -86,6 +86,6 @@ numbers.forEach((n) => {
   else discardedNumbers.push(n);
 });
 
-console.log(`Discarded Numbers:`, discardedNumbers);
+console.log(`Discarded Numbers: `, discardedNumbers);
 
 // --------------------------------------
