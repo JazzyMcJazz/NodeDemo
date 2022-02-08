@@ -27,6 +27,7 @@ const putMovie = (movie) => {
   return repo.put(movie);
 };
 
+// copy of putMovie, because I couldn't be bothered writing individual logic.
 const patchMovie = (movie) => {
   return repo.patch(movie);
 };

@@ -5,12 +5,15 @@ let nextId = 1; // id of the next movie to be added. Is incremented each time a 
 const movies = []; // the "database"
 
 // adds a movie to the "database" and increments nextId
+// TODO: some error handling, maybe
 const add = (movie) => {
   movies.push(new Movie(nextId, movie.title, movie.year));
   const id = nextId++;
   return movies.find((movie) => movie.id == id);
 };
 
+// updates a movie if it excists
+// TODO: make it create a new movie if it doesn't exist (as per convention)
 const put = (updatedMovie) => {
   const movie = movies.find((m) => m.id == updatedMovie.id);
   if (movie == undefined) return;
@@ -25,6 +28,7 @@ const put = (updatedMovie) => {
   return movie;
 };
 
+// copy of put, because I couldn't be bothered writing individual logic.
 const patch = (updatedMovie) => {
   const movie = movies.find((m) => m.id == updatedMovie.id);
   if (movie == undefined) return;
@@ -39,6 +43,8 @@ const patch = (updatedMovie) => {
   return movie;
 };
 
+// returns true if a movie is deleted, false if not found
+// the boolean is used for determining status code in the controller
 const deleteMovie = (id) => {
   const movie = movies.find((movie) => movie.id == id);
   if (movie == undefined) return false;

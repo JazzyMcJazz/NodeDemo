@@ -49,6 +49,7 @@ const putMovie = (app) => {
   });
 };
 
+// copy of putMovie, because I couldn't be bothered writing individual logic.
 const patchMovie = (app) => {
   app.patch('/movies/:id', (req, res) => {
     req.body.id = Number.parseInt(req.params.id);
