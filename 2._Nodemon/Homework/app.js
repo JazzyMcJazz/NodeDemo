@@ -8,5 +8,8 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 })
 
-const port = 8080;
-app.listen(port, () => console.log('Server Running on ', port));
+const PORT = process.env.PORT || 443;
+app.listen(PORT, err => {
+    if (err) throw err;
+    console.log('%c Server Running on ', PORT, 'color: green')
+});
