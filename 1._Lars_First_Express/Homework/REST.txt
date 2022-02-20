@@ -1,8 +1,0 @@
-HTTP METHOD     ENDPOINT            DESC
-
-GET             /movies             get all resources
-GET             /movies/{id}        get a specific resource
-POST            /movies             create a new resource
-PUT             /movies/{id}        edit a resource
-PATCH           /movies/{id}        edit part of a resource
-DELETE          /movies/{id}        delete a resource
