@@ -1,5 +1,29 @@
 {
+  "engines": {
+    "node": "16.13.2"
+  },
   "dependencies": {
     "express": "^4.17.3"
-  }
+  },
+  "name": "jazzys-clock",
+  "version": "16.13.2",
+  "description": "a website that displays a clock",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JazzyMcJazz/NodeDemo.git"
+  },
+  "keywords": [
+    "clock"
+  ],
+  "author": "Lars Riel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JazzyMcJazz/NodeDemo/issues"
+  },
+  "homepage": "https://github.com/JazzyMcJazz/NodeDemo#readme"
 }
