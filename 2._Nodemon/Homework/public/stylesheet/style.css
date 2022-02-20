@@ -1,0 +1,39 @@
+body {
+    background-color: black;
+    font-family: "Consolas", serif;
+}
+
+.flex {
+    display: flex;
+}
+
+.clock-container {
+    width: 50%;
+    margin: 50px auto;
+    color: white;
+}
+
+.clock-title {
+    text-align: center;
+}
+
+.clock-hms {
+    margin: 50px 0;
+    justify-content: space-between;
+}
+
+.current-time {
+    /*font-size: 1.5em;*/
+}
+
+.clock-hour, .clock-minute, .clock-second {
+    padding: 5px;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.clock-separator {
+    padding: 5px;
+    font-size: 2em;
+}
+

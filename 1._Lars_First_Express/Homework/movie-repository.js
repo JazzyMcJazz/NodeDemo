@@ -12,7 +12,7 @@ const add = (movie) => {
   return movies.find((movie) => movie.id == id);
 };
 
-// updates a movie if it excists
+// updates a movie if it exists
 // TODO: make it create a new movie if it doesn't exist (as per convention)
 const put = (updatedMovie) => {
   const movie = movies.find((m) => m.id == updatedMovie.id);
