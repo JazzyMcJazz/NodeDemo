@@ -1,3 +1,83 @@
 <div class="content">
     <h1>NPM</h1>
+
+    <section>
+        <h3>What is NPM?</h3>
+        <p>
+            <span class="lightseagreen">NPM</span> (originally short for Node Package Manager) is a
+            package manager for <span class="lightseagreen">JavaScript</span> and the world's largest
+            software registry. <span class="lightseagreen">NPM</span> comes with a
+            <span class="lightseagreen">CLI</span> which grants the user access to many useful features
+            (see below).
+        </p>
+    </section>
+    <br/>
+    <section>
+        <h3>Usage</h3>
+        <p>
+            Users can use <span class="lightseagreen">NPM</span> to install tools globally in their development
+            environment to help assist in development. Locally (per independent project)
+            <span class="lightseagreen">NPM</span> is used to install and manage packages (dependencies).
+        </p>
+    </section>
+    <br/>
+    <section>
+        <h3>Most Common Commands</h3>
+
+        <code>npm init</code>
+        <p>Starts a wizard that initializes a new project with the current directory as root. At the
+            conclusion of the wizard a <span class="monospace lightseagreen">package.json</span> file is created.</p>
+
+        <br>
+        <code>npm install</code>
+        <p>Installs or updates dependencies found in <span class="monospace lightseagreen">package.json</span></p>
+
+        <br>
+        <code>npm install &lt;package_name&gt;</code>
+        <p>Adds the package to the list of dependencies found in
+            <span class="monospace lightseagreen">package.json</span> and installs it</p>
+    </section>
+    <br/>
+    <section>
+        <h3>package.json</h3>
+        <p>An example of a <span class="monospace lightseagreen">package.json</span> file:</p>
+        <code>
+            {
+            <br/>&nbsp;&nbsp;<span class="skyblue">"name"</span>: <span class="sandybrown">"project_name"</span>,
+            <br/>&nbsp;&nbsp;<span class="skyblue">"version"</span>: <span class="sandybrown">"1.0.0"</span>,
+            <br/>&nbsp;&nbsp;<span class="skyblue">"description"</span>: <span class="sandybrown">"describes the project"</span>,
+            <br/>&nbsp;&nbsp;<span class="skyblue">"main"</span>: <span class="sandybrown">"app.js"</span>,
+            <br/>&nbsp;&nbsp;<span class="skyblue">"scripts"</span>: {
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="skyblue">"test"</span>: <span class="sandybrown">"echo \"Error: no test specified\" && exit 1"</span>,
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="skyblue">"start"</span>: <span class="sandybrown">"node app.js"</span>
+            <br/>&nbsp;&nbsp;},
+            <br/>&nbsp;&nbsp;<span class="skyblue">"repository"</span>: {
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="skyblue">"type"</span>: <span class="sandybrown">"git"</span>,
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="skyblue">"url"</span>: <span class="sandybrown">"git+https://github.com/SomeUser/SomeRepo.git"</span>
+            <br/>&nbsp;&nbsp;},
+            <br/>&nbsp;&nbsp;<span class="skyblue">"keywords"</span>: [
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sandybrown">"npm"</span>,
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sandybrown">"express"</span>,
+            <br/>&nbsp;&nbsp;],
+            <br/>&nbsp;&nbsp;<span class="skyblue">"author"</span>: <span class="sandybrown">"John Smith"</span>,
+            <br/>&nbsp;&nbsp;<span class="skyblue">"license"</span>: <span class="sandybrown">"MIT"</span>,
+            <br/>&nbsp;&nbsp;<span class="skyblue">"dependencies"</span>: {
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="skyblue">"express"</span>: <span class="sandybrown">"^4.17.3"</span>
+            <br/>&nbsp;&nbsp;}
+            <br/>}
+        </code>
+    </section>
+    <br/>
+    <section>
+        <h3>Scripts</h3>
+        <p>You can write scripts that can be called by NPM with a custom keyword by adding them under scripts
+            in your package.json file.</p>
+        <p>Common examples are scripts for testing and executing your project:</p>
+        <code>
+            <span class="skyblue">"scripts"</span>: {
+            <br/>&nbsp;&nbsp;<span class="skyblue">"test"</span>: <span class="sandybrown">"echo \"Error: no test specified\" && exit 1"</span>,
+            <br/>&nbsp;&nbsp;<span class="skyblue">"start"</span>: <span class="sandybrown">"node app.js"</span>
+            <br/>},
+        </code>
+    </section>
 </div>

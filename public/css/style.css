@@ -16,15 +16,25 @@ section {
 }
 
 section h3 {
+    color: mediumseagreen;
     margin: 0;
 }
 
 section p {
-    margin: 0 0 20px 0;
+    margin: 0;
 }
 
 section p a {
     color: yellowgreen;
+}
+
+code {
+    display: block;
+    background-color: black;
+    color: #eeeeee;
+    padding: 3px;
+    margin: 3px 0;
+    border-radius: 5px;
 }
 
 .flex {
@@ -33,7 +43,7 @@ section p a {
 
 .content {
     text-align: center;
-    background-color: #282828;
+    background-color: #1c1c1c;
     color: darkseagreen;
     width: fit-content;
     max-width: 600px;
@@ -43,8 +53,38 @@ section p a {
 }
 
 /*
+    Colors
+*/
+
+.yellowgreen {
+    color: yellowgreen;
+}
+
+.lightseagreen {
+    color: lightseagreen;
+}
+
+.skyblue {
+    color: skyblue;
+}
+
+.sandybrown {
+    color: sandybrown;
+}
+
+/*
+    Fonts
+*/
+
+.monospace {
+    font-family: monospace;
+    font-size: 1.3em;
+}
+
+/*
     Nav
 */
+
 nav {
     background-color: darkseagreen;
     justify-content: space-between;
