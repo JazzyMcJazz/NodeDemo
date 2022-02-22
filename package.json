@@ -1,0 +1,31 @@
+{
+  "name": "mandatory_1",
+  "version": "1.0.0",
+  "description": "A website containing documentation for what we have learned so far",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JazzyMcJazz/NodeDemo.git#mandatory_1.git"
+  },
+  "keywords": [
+    "node",
+    "npm",
+    "express",
+    "ssr",
+    "nodemon",
+    "heroku"
+  ],
+  "author": "Lars Riel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JazzyMcJazz/NodeDemo/issues"
+  },
+  "homepage": "https://github.com/JazzyMcJazz/NodeDemo/tree/mandatory_1.git#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

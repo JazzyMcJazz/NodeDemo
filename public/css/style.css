@@ -1,0 +1,125 @@
+body {
+    background-color: #3a3a3a;
+    color: white;
+    margin: 0
+}
+
+h1 {
+    margin-top: 0;
+}
+
+section {
+    text-align: left;
+    width: 75%;
+    margin: auto;
+    font-family: sans-serif;
+}
+
+section h3 {
+    margin: 0;
+}
+
+section p {
+    margin: 0 0 20px 0;
+}
+
+section p a {
+    color: yellowgreen;
+}
+
+.flex {
+    display: flex;
+}
+
+.content {
+    text-align: center;
+    background-color: #282828;
+    color: darkseagreen;
+    width: fit-content;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 25px;
+}
+
+/*
+    Nav
+*/
+nav {
+    background-color: darkseagreen;
+    justify-content: space-between;
+    box-shadow: 0 0 5px 2px black;
+}
+
+.nav-left, .nav-right {
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-left {
+    padding-left: 20px;
+}
+
+.nav-right {
+    padding-right: 20px;
+}
+
+nav a {
+    height: 100%;
+    padding: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: monospace;
+    color: green;
+}
+
+nav a:hover {
+    background-color: green;
+    color: greenyellow;
+}
+
+nav a div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/*
+    Homepage
+ */
+
+.topics {
+    /*width: 50%;*/
+    margin: 0 auto;
+}
+
+.topics a {
+    background-color: darkseagreen;
+    color: green;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.6em;
+    width: 140px;
+    height: 100px;
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 3px;
+}
+
+.topics a:hover {
+    background-color: green;
+    color: greenyellow;
+}
+
+.topics a div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.topics-row {
+    justify-content: center;
+}
