@@ -1,3 +1,101 @@
 <div class="content">
     <h1>Express</h1>
+
+    <section>
+        <h3>What is Express?</h3>
+        <p>Express is a web application framework for Node.js. It supplies out of the box server
+            functionality such as HTTP controller methods (GET, POST, PUT, DELETE, etc.) and many
+            options for server behavior</p>
+    </section>
+    <br/>
+    <section>
+        <h3>How to Install Express?</h3>
+        <p>As with any NPM package, there are two ways you can install Express:</p>
+        <br/>
+        <p><span class="bold">Option 1:</span><br/>
+            Declare express under dependencies in <span class="monospace lightseagreen">package.json</span>
+        </p>
+        <code>
+            <span class="skyblue">"dependencies"</span>: {
+            <br/>&nbsp;&nbsp;<span class="skyblue">"express"</span>: <span class="sandybrown">"^4.17.3"</span>
+            <br/>}
+        </code>
+        <p>and run</p>
+        <code class="cli">npm install</code>
+        <br/>
+        <p><span class="bold">Option 2:</span><br/>
+            Simply run</p>
+        <code class="cli">npm install express</code>
+    </section>
+    <br/>
+    <section>
+        <h3>How to import express into your project?</h3>
+        <p>
+            Simply instantiate the two objects as below. (Note: the
+            <span class="monospace">require</span> keyword is how you import modules in Node.js)
+        </p>
+        <code>
+            <span class="dodgerblue">const</span>
+            <span class="ffffcf">express</span> =
+            <span class="ffffcf">require</span>(
+            <span class="sandybrown">'express'</span>);<br/>
+            <span class="dodgerblue">const</span>
+            <span class="skyblue">app</span> =
+            <span class="ffffcf">express</span>();
+        </code>
+    </section>
+    <br/>
+    <section>
+        <h3>Usage</h3>
+        <p>You can use express to declare HTTP controller methods</p>
+        <code>
+            <span class="dodgerblue">const</span>
+            <span class="deepskyeblue">cars</span> = [];
+            <br/><br/>
+            <span class="deepskyeblue">app</span>.<span class="ffffcf">post</span>(<span class="sandybrown">'/cars'</span>,
+            (<span class="skyblue">req</span>,
+            <span class="skyblue">res</span>)
+            <span class="dodgerblue">=></span> {<br/>
+            <span class="deepskyeblue">&nbsp;&nbsp;&nbsp;&nbsp;cars</span>.<span class="ffffcf">push</span>(<span class="skyblue">req</span>.<span class="skyblue">body</span>);<br/>
+            <span class="skyblue">&nbsp;&nbsp;&nbsp;&nbsp;res</span>.<span class="ffffcf">send</span>(<span class="deepskyeblue">cars</span>);<br/>
+            });
+            <br/><br/>
+            <span class="deepskyeblue">app</span>.<span class="ffffcf">get</span>(<span class="sandybrown">'/cars'</span>,
+            (<span class="skyblue">req</span>,
+            <span class="skyblue">res</span>)
+            <span class="deepskyeblue">=></span> {<br/>
+            <span class="skyblue">&nbsp;&nbsp;&nbsp;&nbsp;res</span>.<span class="ffffcf">send</span>(<span class="deepskyeblue">cars</span>);<br/>
+            });
+        </code>
+
+        <br>
+        <p>
+            You can configure Express to interpret the data contained in an
+            incoming REST API calls as a specific data type, for example JSON.
+            This would be necessary for the code in the previous example to work.
+        </p>
+        <code>
+            <span class="deepskyeblue">const</span>
+            <span class="skyblue">app</span> =
+            <span class="ffffcf">express</span>();<br/>
+            <span class="skyblue">app</span>.<span class="ffffcf">use</span>(<span class="ffffcf">express</span>.<span class="ffffcf">json</span>());
+        </code>
+
+        <br>
+        <p>
+            You can configure a certain folder and its sub folders where certain assets are contained
+            to be public so that a client can access them without an explicit pointer from the controller.
+            Such assets could be html, css and JavaScript files.
+        </p>
+        <code>
+            <span class="deepskyeblue">const</span>
+            <span class="skyblue">app</span> =
+            <span class="ffffcf">express</span>();<br/>
+            <span class="skyblue">app</span>.<span class="ffffcf">use</span>(<span class="ffffcf">express</span>.<span class="ffffcf">static</span>(<span class="sandybrown">'public'</span>));
+        </code>
+
+        <br>
+        <p>And more...</p>
+    </section>
+
 </div>
