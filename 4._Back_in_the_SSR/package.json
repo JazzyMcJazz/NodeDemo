@@ -1,0 +1,26 @@
+{
+  "name": "ssr_project",
+  "version": "1.0.0",
+  "description": "To show one way to do SRR in Express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JazzyMcJazz/NodeDemo.git"
+  },
+  "keywords": [
+    "SSR",
+    "express"
+  ],
+  "author": "Lars Riel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JazzyMcJazz/NodeDemo/issues"
+  },
+  "homepage": "https://github.com/JazzyMcJazz/NodeDemo#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
