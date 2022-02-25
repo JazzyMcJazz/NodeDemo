@@ -4,39 +4,40 @@
     <section>
         <h3>What is NPM?</h3>
         <p>
-            <span class="lightseagreen">NPM</span> (originally short for Node Package Manager) is a
-            package manager for <span class="lightseagreen">JavaScript</span> and the world's largest
-            software registry. <span class="lightseagreen">NPM</span> comes with a
-            <span class="lightseagreen">CLI</span> which grants the user access to many useful features
-            (see below).
+            NPM (originally short for Node Package Manager) is a package manager
+            for JavaScript and the world's largest software registry. NPM comes
+            with a CLI which grants the user access to many useful features (see below).
         </p>
     </section>
+
     <br/>
     <section>
         <h3>Usage</h3>
         <p>
-            Users can use <span class="lightseagreen">NPM</span> to install tools globally in their development
+            Users can use NPM to install tools globally in their development
             environment to help assist in development. Locally (per independent project)
-            <span class="lightseagreen">NPM</span> is used to install and manage packages (dependencies).
+            NPM is used to install and manage packages (dependencies).
         </p>
     </section>
+
     <br/>
     <section>
         <h3>Common Commands</h3>
 
-        <code class="cli">npm init</code>
+        <code class="cli"><span class="yellow">npm</span> init</code>
         <p>Starts a wizard that initializes a new project with the current directory as root. At the
             conclusion of the wizard a <span class="monospace lightseagreen">package.json</span> file is created.</p>
 
         <br>
-        <code class="cli">npm install</code>
+        <code class="cli"><span class="yellow">npm</span> install</code>
         <p>Installs or updates dependencies found in <span class="monospace lightseagreen">package.json</span></p>
 
         <br>
-        <code class="cli">npm install &lt;package_name&gt;</code>
+        <code class="cli"><span class="yellow">npm</span> install &lt;package_name&gt;</code>
         <p>Adds the package to the list of dependencies found in
             <span class="monospace lightseagreen">package.json</span> and installs it</p>
     </section>
+
     <br/>
     <section>
         <h3>package.json</h3>
@@ -67,10 +68,11 @@
             <br/>}
         </code>
     </section>
+
     <br/>
     <section>
         <h3>Scripts</h3>
-        <p>You can write scripts that can be called by <span class="lightseagreen">NPM</span> with a custom
+        <p>You can write scripts that can be called by NPM with a custom
             keyword by adding them under scripts in your <span class="monospace lightseagreen">package.json</span>
             file.</p>
         <p>Common examples are scripts for testing and executing your project:</p>
@@ -80,5 +82,14 @@
             <br/>&nbsp;&nbsp;<span class="skyblue">"start"</span>: <span class="sandybrown">"node app.js"</span>
             <br/>},
         </code>
+    </section>
+
+    <br/>
+    <section>
+        <h3>Finding packages</h3>
+        <p>
+            You can find NPM packages by browsing the official library at
+            <a target="_blank" href="https://www.npmjs.com/">https://www.npmjs.com/</a>
+        </p>
     </section>
 </div>
