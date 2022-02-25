@@ -1,3 +1,97 @@
 <div class="content">
     <h1>Heroku</h1>
+
+    <section>
+        <h3>What is Heroku?</h3>
+        <p>
+            Heroku is a Cloud Platform as a Service which makes deploying and
+            maintaining web applications easy. Setting up a CI/CD pipeline for
+            automatic deployment is also possible
+        </p>
+    </section>
+
+    <br/>
+    <section>
+        <h3>How to Deploy a web app on Heroku?</h3>
+        <p>Before you can deploy a Node.js project on Heroku you need to have two things in order:</p>
+        <br/>
+        <p>
+            First, you need to have a
+            <span class="lightseagreen monospace">start</span> script in your
+            <span class="lightseagreen monospace">package.json</span>
+        </p>
+        <code>
+            <span class="skyblue">"scripts"</span>: {
+            <br/>&nbsp;&nbsp;<span class="skyblue">"start"</span>: <span class="sandybrown">"node app.js"</span>
+            <br/>},
+        </code>
+
+        <br/>
+        <p>
+            Second, because Heroku uses dynamic ports you need to set your application to listen on
+            <span class="lightseagreen monospace">process.env.PORT</span>
+        </p>
+        <code>
+            <span class="dodgerblue">const</span>
+            <span class="deepskyblue">PORT</span> =
+            <span class="skyblue">process</span>.<span class="skyblue">env</span>.<span class="deepskyblue">PORT</span>
+            || <span class="green">3000</span>;<br/>
+            <span class="deepskyblue">app</span>.<span class="ffffcf">listen</span>(<span class="deepskyblue">PORT</span>)
+        </code>
+
+        <br/>
+        <p>
+            Now we are ready to deploy. Go to
+            <a target="_blank" href="https://heroku.com/apps">heroku.com</a> and register/login
+        </p>
+        <br/>
+        <p>
+            Once you are logged in, in the top-right corner click
+            <span class="lightseagreen">New > Create new app</span>
+        </p>
+        <br/>
+        <img src="../../img/new_project.png" alt="Click New and then Create New App"/>
+
+        <br/><br/><br/>
+        <p>
+            One the next page you specify your apps name (it has to
+            be unique) and a region and click
+            <span class="lightseagreen">Create App</span>
+        </p>
+        <br/>
+        <img src="../../img/create_new_app.png" alt="Input app name and region"/>
+
+        <br/><br/><br/>
+        <p>Once you are on your new apps page go to <span class="lightseagreen">Deploy</span> tab</p>
+        <br/>
+        <img src="../../img/go_to_deploy_tab.png" alt="Go to Deploy tab"/>
+
+        <br/><br/><br/>
+        <p>
+            You have different options regarding how you get your source code onto Heroku.
+            The easiest way is to use GitHub and connect your repository to your Heroku app
+        </p>
+        <br/>
+        <img src="../../img/connect_github.png" alt="Connect your GitHub repository"/>
+
+        <br/><br/><br/>
+        <p>
+            Once you have found your repo and connected to it, scroll down to
+            <span class="lightseagreen">Automatic deploys</span> or
+            <span class="lightseagreen">Manual deploy</span> - depending on your preference -
+            choose your desired branch to deploy and hit
+            <span class="lightseagreen">Deploy Branch</span>
+        </p>
+        <br/>
+        <img src="../../img/deploy_branch.png" alt="Deploy your desired branch"/>
+
+        <br/><br/><br/>
+        <p>Congratulations! Your app is now live in the cloud</p>
+    </section>
+
+    <br/><br/>
+    <section>
+        <h3>NOTE</h3>
+        <p>This guide only works for projects with no external dependencies like for example databases</p>
+    </section>
 </div>

@@ -56,9 +56,19 @@ code {
     border-radius: 25px;
 }
 
+img {
+    max-width: 600px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px black;
+}
+
 /*
     Colors
 */
+
+.yellow {
+    color: #ffd507;
+}
 
 .yellowgreen {
     color: yellowgreen;
@@ -76,7 +86,7 @@ code {
     color: skyblue;
 }
 
-.deepskyeblue {
+.deepskyblue {
     color: deepskyblue;
 }
 
@@ -86,6 +96,14 @@ code {
 
 .ffffcf {
     color: #ffffcf;
+}
+
+.grey {
+    color: grey;
+}
+
+.green {
+    color: #8bc34a;
 }
 
 /*
