@@ -36,4 +36,50 @@
             only has to be rendered once. For large sites, however, this might not be ideal.
         </p>
     </section>
+
+    <br/>
+    <section>
+        <h3>How to do SSR in Node.js?</h3>
+        <p>In Client Side Rendering you simply send HTML as they are</p>
+        <code>
+            <span class="deepskyblue">app</span>.<span class="ffffcf">get</span>(<span class="sandybrown">'/my-page'</span>,
+            (<span class="skyblue">req</span>,
+            <span class="skyblue">res</span>)
+            <span class="deepskyblue">=></span> {<br/>
+            <span class="skyblue">&nbsp;&nbsp;&nbsp;&nbsp;res</span>.<span class="ffffcf">sendFile</span>(<span class="sandybrown">'/path/to/my-page.html'</span>);<br/>
+            });
+        </code>
+
+        <br/>
+        <p>
+            In SSR, you convert your HTML files to strings and simply send that string as the response.
+            In order to do this the first thing you have to do is import a tool that can read the
+            file into a byte stream, and from there converted to a string:
+        </p>
+        <code>
+            <span class="dodgerblue">const</span>
+            <span class="green">fs</span> =
+            <span class="ffffcf">require</span>(<span class="sandybrown">'fs'</span>);
+        </code>
+
+        <br/>
+        <p>Now we have the tool, now we can convert our html into a string and use it in our response</p>
+        <code>
+            <span class="dodgerblue">const</span>
+            <span class="deepskyblue">myPage</span> =
+            <span class="green">fs</span>.<span class="ffffcf">readFileSync</span>(<span class="sandybrown">'/path/to/my-page.html</span>').<span class="ffffcf">toString</span>();
+            <br/><br/>
+            <span class="deepskyblue">app</span>.<span class="ffffcf">get</span>(<span class="sandybrown">'/my-page'</span>,
+            (<span class="skyblue">req</span>, <span class="skyblue">res</span>) => {
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="skyblue">res</span>.<span class="ffffcf">send</span>(<span class="deepskyblue">myPage</span>);<br/>
+            });
+        </code>
+
+        <br/>
+        <p>
+            Note that it is possible to pass dynamic content to your html files after stringifying them
+            by replacing keywords. This can also be accomplished before stringifying by using a template
+            engine. However, this will not be demonstrated here.
+        </p>
+    </section>
 </div>
