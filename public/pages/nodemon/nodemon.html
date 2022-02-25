@@ -1,3 +1,93 @@
 <div class="content">
     <h1>Nodemon</h1>
+
+    <section>
+        <h3>What is Nodemon?</h3>
+        <p>
+            Nodemon is a tool that monitors your project files and automatically
+            restarts your server when it detects changes.
+        </p>
+    </section>
+
+    <br/>
+    <section>
+        <h3>How to install Nodemon?</h3>
+        <p>
+            Nodemon works best when installed globally
+            using the
+            <span class="monospace lightseagreen">-g</span>
+            argument
+        </p>
+        <code class="cli">
+            <span class="yellow">npm</span> install <span class="grey">-g</span> nodemon</code>
+    </section>
+
+    <br/>
+    <section>
+        <h3>Usage</h3>
+        <p>In development, run you project with `nodemon app.js`</p>
+        <code class="cli">
+            <span class="yellow">nodemon</span> app.js<br/>
+            <span class="sandybrown">
+                [nodemon] 2.0.15<br/>
+                [nodemon] to restart at any time, enter `rs`<br/>
+                [nodemon] watching path(s): *.*<br/>
+                [nodemon] watching extensions: js,mjs,json<br/>
+            </span>
+            <span class="green">[nodemon] starting `node app.js`</span>
+        </code>
+        <p>
+            The server will now restart automatically when detecting changes in your project.
+            If you need to force a restart for any reason you can type
+            <span class="monospace lightseagreen">rs↵</span> in the terminal
+        </p>
+    </section>
+
+    <br>
+    <section>
+        <h3>Settings</h3>
+        <p>
+            Nodemon automatically looks for a start script in
+            <span class="monospace lightseagreen">package.json</span>.
+            If you have specified one, you can don't have to include the
+            entry point argument when starting a server with Nodemon
+        </p>
+        <code>
+            <span class="skyblue">"scripts"</span>: {
+            <br/>&nbsp;&nbsp;<span class="skyblue">"start"</span>: <span class="sandybrown">"node app.js"</span>
+            <br/>},
+        </code>
+        <code class="cli">
+            <span class="yellow">nodemon</span><br/>
+            <span class="sandybrown">[...]</span><br/>
+            <span class="green">[nodemon] starting `node app.js`</span>
+        </code>
+
+        <br/>
+        <p>
+            By default Nodemon only monitors files with certain file extensions. It is possible
+            to change these defaults by running the server with the
+            <span class="monospace lightseagreen">-e</span> or
+            <span class="monospace lightseagreen">--ext</span> argument.
+        </p>
+        <code class="cli">
+            <span class="yellow">nodemon</span>
+            <span class="grey">-e</span>
+            js<span class="grey">,</span>json<span class="grey">,</span>css<span class="grey">,</span>html<br/>
+            <span class="sandybrown">
+                [...]<br/>
+                [nodemon] watching extensions: js,json,css,html<br/>
+            </span>
+            <span class="green">[nodemon] starting `node app.js`</span>
+        </code>
+
+        <br/>
+        <p>
+            You can also specify settings inside a designated config file, or even inside
+            <span class="monospace lightseagreen">package.json</span>
+        </p>
+        <p>For further documentation see
+            <a target="_blank" href="https://github.com/remy/nodemon#readme">https://github.com/remy/nodemon#readme</a>
+        </p>
+    </section>
 </div>
