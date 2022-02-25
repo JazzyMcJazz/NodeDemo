@@ -21,18 +21,18 @@
             <br/>}
         </code>
         <p>and run</p>
-        <code class="cli">npm install</code>
+        <code class="cli"><span class="yellow">npm</span> install</code>
         <br/>
         <p><span class="bold">Option 2:</span><br/>
             Simply run</p>
-        <code class="cli">npm install express</code>
+        <code class="cli"><span class="yellow">npm</span> install express</code>
     </section>
     <br/>
     <section>
         <h3>How to import express into your project?</h3>
         <p>
             Simply instantiate the two objects as below. (Note: the
-            <span class="monospace">require</span> keyword is how you import modules in Node.js)
+            <span class="monospace lightseagreen">require</span> keyword is how you import modules in Node.js)
         </p>
         <code>
             <span class="dodgerblue">const</span>
@@ -50,21 +50,21 @@
         <p>You can use express to declare HTTP controller methods</p>
         <code>
             <span class="dodgerblue">const</span>
-            <span class="deepskyeblue">cars</span> = [];
+            <span class="deepskyblue">cars</span> = [];
             <br/><br/>
-            <span class="deepskyeblue">app</span>.<span class="ffffcf">post</span>(<span class="sandybrown">'/cars'</span>,
+            <span class="deepskyblue">app</span>.<span class="ffffcf">post</span>(<span class="sandybrown">'/cars'</span>,
             (<span class="skyblue">req</span>,
             <span class="skyblue">res</span>)
             <span class="dodgerblue">=></span> {<br/>
-            <span class="deepskyeblue">&nbsp;&nbsp;&nbsp;&nbsp;cars</span>.<span class="ffffcf">push</span>(<span class="skyblue">req</span>.<span class="skyblue">body</span>);<br/>
-            <span class="skyblue">&nbsp;&nbsp;&nbsp;&nbsp;res</span>.<span class="ffffcf">send</span>(<span class="deepskyeblue">cars</span>);<br/>
+            <span class="deepskyblue">&nbsp;&nbsp;&nbsp;&nbsp;cars</span>.<span class="ffffcf">push</span>(<span class="skyblue">req</span>.<span class="skyblue">body</span>);<br/>
+            <span class="skyblue">&nbsp;&nbsp;&nbsp;&nbsp;res</span>.<span class="ffffcf">send</span>(<span class="deepskyblue">cars</span>);<br/>
             });
             <br/><br/>
-            <span class="deepskyeblue">app</span>.<span class="ffffcf">get</span>(<span class="sandybrown">'/cars'</span>,
+            <span class="deepskyblue">app</span>.<span class="ffffcf">get</span>(<span class="sandybrown">'/cars'</span>,
             (<span class="skyblue">req</span>,
             <span class="skyblue">res</span>)
-            <span class="deepskyeblue">=></span> {<br/>
-            <span class="skyblue">&nbsp;&nbsp;&nbsp;&nbsp;res</span>.<span class="ffffcf">send</span>(<span class="deepskyeblue">cars</span>);<br/>
+            <span class="deepskyblue">=></span> {<br/>
+            <span class="skyblue">&nbsp;&nbsp;&nbsp;&nbsp;res</span>.<span class="ffffcf">send</span>(<span class="deepskyblue">cars</span>);<br/>
             });
         </code>
 
@@ -75,7 +75,7 @@
             This would be necessary for the code in the previous example to work.
         </p>
         <code>
-            <span class="deepskyeblue">const</span>
+            <span class="deepskyblue">const</span>
             <span class="skyblue">app</span> =
             <span class="ffffcf">express</span>();<br/>
             <span class="skyblue">app</span>.<span class="ffffcf">use</span>(<span class="ffffcf">express</span>.<span class="ffffcf">json</span>());
@@ -88,14 +88,17 @@
             Such assets could be html, css and JavaScript files.
         </p>
         <code>
-            <span class="deepskyeblue">const</span>
+            <span class="deepskyblue">const</span>
             <span class="skyblue">app</span> =
             <span class="ffffcf">express</span>();<br/>
             <span class="skyblue">app</span>.<span class="ffffcf">use</span>(<span class="ffffcf">express</span>.<span class="ffffcf">static</span>(<span class="sandybrown">'public'</span>));
         </code>
 
         <br>
-        <p>And more...</p>
+        <p>
+            Additional documentation can be found at
+            <a target="_blank" href="https://expressjs.com/">https://expressjs.com/</a>
+        </p>
     </section>
 
 </div>
