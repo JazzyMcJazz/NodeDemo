@@ -34,10 +34,10 @@ const heroku      = app => app.get('/heroku',  (_, res) => res.send(herokuPage))
 
 function renderPage(page) {
 
-    const index = fs.readFileSync('./public/components/head/head.html').toString();
+    const head = fs.readFileSync('./public/components/head/head.html').toString();
     const nav = fs.readFileSync('./public/components/nav/nav.html').toString();
     const content = fs.readFileSync(`./public/pages/${page}/${page}.html`).toString();
     const footer = fs.readFileSync('./public/components/footer/footer.html').toString();
 
-    return index + nav + content + footer;
+    return head + nav + content + footer;
 }
