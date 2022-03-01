@@ -83,9 +83,30 @@
 
         <br/>
         <p>
-            You can also specify settings inside a designated config file, or even inside
-            <span class="monospace lightseagreen">package.json</span>
+            You can also specify settings inside a designated config file,
+            <span class="monospace lightseagreen">nodemon.json</span>
         </p>
+        <code>
+            {
+            <br/>&nbsp;&nbsp;<span class="skyblue">"ext"</span>: <span class="sandybrown">"js,json,css,html"</span>,
+            <br/>&nbsp;&nbsp;<span class="skyblue">"..."</span>: <span class="sandybrown">"... other values"</span>,
+            <br/>}
+        </code>
+
+        <br/>
+        <p>
+            Or even inside
+            <span class="monospace lightseagreen">package.json</span>
+            if you want to keep everything in one place
+        </p>
+        <code>
+            <span class="skyblue">"nodemonConfig"</span>: {
+            <br/>&nbsp;&nbsp;<span class="skyblue">"ext"</span>: <span class="sandybrown">"js,json,css,html"</span>
+            <br/>&nbsp;&nbsp;<span class="skyblue">"..."</span>: <span class="sandybrown">"... other values"</span>,
+            <br/>},
+        </code>
+
+        <br/>
         <p>For further documentation see
             <a target="_blank" href="https://github.com/remy/nodemon#readme">https://github.com/remy/nodemon#readme</a>
         </p>
