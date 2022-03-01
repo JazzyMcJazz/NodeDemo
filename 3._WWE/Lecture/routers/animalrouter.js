@@ -1,5 +1,7 @@
-const express = require('express');
+const router = require('express').Router();
 
-module.exports = {
+router.get('/amount', (req, res) => {
+   res.send({data: "test 28"})
+});
 
-};
+module.exports = router;
