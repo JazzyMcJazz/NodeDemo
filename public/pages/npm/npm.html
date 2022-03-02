@@ -105,8 +105,27 @@
         <p>
             NOTE:<br/>The above example only works in a bash terminal. If you are using Windows CMD or PowerShell
             the syntax is different. A way to get around this in a cross-OS development environment is to install
-            the package <span class="monospace lightseagreen">cross-env</span>. Further
+            the package <span class="monospace lightseagreen">cross-env</span>.<br/> It is recommended you install
+            <span class="monospace lightseagreen">cross-env</span> as a development dependency:
         </p>
+        <code class="cli">
+            <span class="yellow">npm</span> install <span class="grey">--save-dev</span> cross-env
+        </code>
+
+        <br/>
+        <p>Your <span class="monospace lightseagreen">package.json</span> should now include this:</p>
+        <code>
+            <span class="skyblue">"devDependencies"</span>: {<br/>
+            <span class="skyblue">&nbsp;&nbsp;"cross-env"</span>:
+            <span class="sandybrown">"^7.0.3"</span><br/>
+            }
+        </code>
+
+        <br/>
+        <p>Now you can define environment variables using a single syntax across any terminal</p>
+        <code class="cli">
+            <span class="yellow">cross-env</span> PORT=3000 node app.js
+        </code>
     </section>
 
     <br/>

@@ -75,9 +75,6 @@
             This would be necessary for the code in the previous example to work.
         </p>
         <code>
-            <span class="deepskyblue">const</span>
-            <span class="skyblue">app</span> =
-            <span class="ffffcf">express</span>();<br/>
             <span class="skyblue">app</span>.<span class="ffffcf">use</span>(<span class="ffffcf">express</span>.<span class="ffffcf">json</span>());
         </code>
 
@@ -88,10 +85,49 @@
             Such assets could be html, css and JavaScript files.
         </p>
         <code>
-            <span class="deepskyblue">const</span>
-            <span class="skyblue">app</span> =
-            <span class="ffffcf">express</span>();<br/>
             <span class="skyblue">app</span>.<span class="ffffcf">use</span>(<span class="ffffcf">express</span>.<span class="ffffcf">static</span>(<span class="sandybrown">'public'</span>));
+        </code>
+
+        <br/>
+        <p>
+            You can configure Express to listen on a certain port. This is necessary in order to run a
+            functioning web server. By convention this statement should be a the bottom of your project
+        </p>
+        <code>
+            <span class="skyblue">app</span>.<span class="ffffcf">listen</span>(<span class="skyblue">8080</span>);
+        </code>
+
+        <br/>
+        <p>
+            You can configure a router object in Express to define your endpoints. This is practical
+            if you want to put your HTTP methods in a separate file:
+        </p>
+        <code>
+            <span class="green">// router.js</span>
+            <br/><br/>
+            <span class="dodgerblue">const</span>
+            <span class="deepskyblue">router</span> =
+            <span class="ffffcf">require</span>(<span class="sandybrown">'express'</span>).<span class="ffffcf">Router</span>();
+            <br/><br/>
+            <span class="deepskyblue">router</span>.<span class="ffffcf">get</span>(<span class="sandybrown">'/some-endpoint'</span>,
+            (<span class="skyblue">req</span>,
+            <span class="skyblue">res</span>) =>
+            <span class="skyblue">res</span>.<span class="skyblue">send</span>(<span class="grey">...</span>));
+            <br/><br/>
+            <span class="deepskyblue">module</span>.<span class="deepskyblue">exports</span> =
+            <span class="deepskyblue">router</span>;
+        </code>
+
+        <br/>
+        <code>
+            <span class="green">// app.js</span>
+            <br/><br/>
+            <span class="dodgerblue">const</span>
+            <span class="deepskyblue">router</span> =
+            <span class="ffffcf">require</span>(<span class="sandybrown">'./router.js'</span>);
+            <br/><br/>
+            <span class="deepskyblue">app</span>.<span class="ffffcf">use</span>(<span class="deepskyblue">router</span>);
+
         </code>
 
         <br>

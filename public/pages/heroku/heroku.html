@@ -18,7 +18,8 @@
         <p>
             First, you need to have a
             <span class="lightseagreen monospace">start</span> script in your
-            <span class="lightseagreen monospace">package.json</span>
+            <span class="lightseagreen monospace">package.json</span>. Heroku uses this script to run
+            node projects
         </p>
         <code>
             <span class="skyblue">"scripts"</span>: {
@@ -28,8 +29,8 @@
 
         <br/>
         <p>
-            Second, because Heroku uses dynamic ports you need to set your application to listen on
-            <span class="lightseagreen monospace">process.env.PORT</span>
+            Second, because Heroku assigns a dynamic port through the environment you need to set your application to listen on
+            <span class="lightseagreen monospace">process.env.PORT</span>. In this example a fallback port has been set as well, which is practical in development
         </p>
         <code>
             <span class="dodgerblue">const</span>
