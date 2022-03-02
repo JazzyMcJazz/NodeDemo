@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "PORT=3000 nodemon",
     "start": "node app.js"
   },
   "repository": {
@@ -27,5 +28,8 @@
   "homepage": "https://github.com/JazzyMcJazz/NodeDemo/tree/mandatory_1.git#readme",
   "dependencies": {
     "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

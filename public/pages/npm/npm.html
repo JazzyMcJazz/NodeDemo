@@ -14,9 +14,10 @@
     <section>
         <h3>Usage</h3>
         <p>
-            Users can use NPM to install tools globally in their development
+            Developers can use NPM to install tools globally in their development
             environment to help assist in development. Locally (per independent project)
-            NPM is used to install and manage packages (dependencies).
+            NPM is used to install and manage packages (define dependencies). NPM also includes
+            build tools and a way to define metadata.
         </p>
     </section>
 
@@ -82,6 +83,30 @@
             <br/>&nbsp;&nbsp;<span class="skyblue">"start"</span>: <span class="sandybrown">"node app.js"</span>
             <br/>},
         </code>
+    </section>
+
+    <br/>
+    <section>
+        <h3>Environment</h3>
+        <p>
+            In Node.js environment variables can be accessed with <span class="monospace skyblue">process.env</span>
+        </p>
+
+        <br/>
+        <p>
+            You can define environment variables in the command you use to run your node project<br/>
+            For example:
+        </p>
+        <code class="cli">
+            PORT=3000 node app.js
+        </code>
+
+        <br/>
+        <p>
+            NOTE:<br/>The above example only works in a bash terminal. If you are using Windows CMD or PowerShell
+            the syntax is different. A way to get around this in a cross-OS development environment is to install
+            the package <span class="monospace lightseagreen">cross-env</span>. Further
+        </p>
     </section>
 
     <br/>
