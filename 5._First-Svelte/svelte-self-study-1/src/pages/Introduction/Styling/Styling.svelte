@@ -3,7 +3,7 @@
 <style>
     p {
         font-family: Chiller,serif;
-        font-size: 1.2em;
-        color: #e91e63;
+        font-size: 1.5em;
+        color: hotpink;
     }
 </style>

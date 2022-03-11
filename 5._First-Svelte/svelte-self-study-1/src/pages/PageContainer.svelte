@@ -12,8 +12,8 @@
                 <div class="topic">
                     <h3>Topic: {topic.title}</h3>
                     <svelte:component this={topic.component}/>
+                    <a class="source" target="_blank" href={topic.src}>source</a>
                 </div>
-                <a href={topic.src}>source</a>
             {/each}
         </div>
     </div>
@@ -29,6 +29,7 @@
     #page {
         background-color: pink;
         padding: 20px;
+        border-radius: 12px;
     }
 
     #topics {
@@ -39,8 +40,14 @@
 
     .topic {
         height: fit-content;
-        background-color: burlywood;
+
+        background-color: cadetblue;
         padding: 5px;
         margin: 5px;
+        border-radius: 12px;
+    }
+
+    .source {
+        flex: 1 1 100%;
     }
 </style>
