@@ -1,15 +1,28 @@
 <script>
 	import PageContainer from "./pages/PageContainer.svelte";
-	import HelloWorld from "./pages/Introduction/HelloWorld/HelloWorld.svelte";
 
 	export let part;
 	export let pages;
+
+	let categories = ['Introduction', 'Reactivity', 'Props', 'Logic', 'Events']
+
+	let showPage = categories[4];
 </script>
 
 <main>
 	<h1>Svelte self-study - Part {part}</h1>
 
-	<PageContainer title={pages.introduction.title} topics={pages.introduction.topics}/>
+	<!-- BUTTONS -->
+	{#each categories as cat}
+		<button on:click={() => showPage = cat}>{cat}</button>
+	{/each}
+
+	<!-- PAGES -->
+	{#each categories as cat}
+		{#if showPage === cat}
+			<PageContainer title={pages[cat].title} topics={pages[cat].topics}/>
+		{/if}
+	{/each}
 </main>
 
 <style>
@@ -25,6 +38,10 @@
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
+	}
+
+	button {
+		margin: 10px;
 	}
 
 	@media (min-width: 640px) {
