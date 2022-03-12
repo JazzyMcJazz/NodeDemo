@@ -4893,38 +4893,38 @@ var app = (function () {
     			Reactivity: {
     				title: 'Reactivity',
     				topics: [
-    					{component: ReactiveAssignments, title: 'Reactive Assignments', src: ''},
-    					{component: ReactiveDeclarations, title: 'Reactive Declarations', src: ''},
-    					{component: ReactiveStatements, title: 'Reactive Statements', src: ''},
+    					{component: ReactiveAssignments, title: 'Reactive Assignments', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Reactivity/ReactiveAssignments'},
+    					{component: ReactiveDeclarations, title: 'Reactive Declarations', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Reactivity/ReactiveDeclarations'},
+    					{component: ReactiveStatements, title: 'Reactive Statements', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Reactivity/ReactiveStatements'},
 
     				]
     			},
     			Props: {
     				title: 'Props',
     				topics: [
-    					{component: DeclaringProps, title: 'Declaring Props', src: ''},
-    					{component: DefaultValues, title: 'Default Values', src: ''},
-    					{component: SpreadProps, title: 'Spread Props', src: ''},
+    					{component: DeclaringProps, title: 'Declaring Props', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Props/DeclaringProps'},
+    					{component: DefaultValues, title: 'Default Values', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Props/DefaultValues'},
+    					{component: SpreadProps, title: 'Spread Props', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Props/SpreadProps'},
     				]
     			},
     			Logic: {
     				title: 'Logic',
     				topics: [
-    					{component: If_Blocks, title: 'If Blocks', src: ''},
-    					{component: ElseBlocks, title: 'Else Blocks', src: ''},
-    					{component: ElseIfBlocks, title: 'Else-If Blocks', src: ''},
-    					{component: EachBlocks, title: 'Each Blocks', src: ''},
-    					{component: KeyedEachBlocks, title: 'Keyed Each Blocks', src: ''}
+    					{component: If_Blocks, title: 'If Blocks', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Logic/IfBlocks'},
+    					{component: ElseBlocks, title: 'Else Blocks', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Logic/ElseBlocks'},
+    					{component: ElseIfBlocks, title: 'Else-If Blocks', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Logic/ElseIfBlocks'},
+    					{component: EachBlocks, title: 'Each Blocks', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Logic/EachBlocks'},
+    					{component: KeyedEachBlocks, title: 'Keyed Each Blocks', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Logic/KeyedEachBlocks'}
     				]
     			},
     			Events: {
     				title: 'Events',
     				topics: [
-    					{component: DOMEvents, title: 'DOM Events', src: ''},
-    					{component: InlineHandlers, title: 'Inline Handlers', src: ''},
-    					{component: EventModifiers, title: 'Event Modifiers', src: ''},
-    					{component: ComponentEvents, title: 'Component Events', src: ''},
-    					{component: EventForwarding, title: 'Event Forwarding', src: ''},
+    					{component: DOMEvents, title: 'DOM Events', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Events/DOMEvents'},
+    					{component: InlineHandlers, title: 'Inline Handlers', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Events/InlineHandlers'},
+    					{component: EventModifiers, title: 'Event Modifiers', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Events/EventModifiers'},
+    					{component: ComponentEvents, title: 'Component Events', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Events/ComponentEvents'},
+    					{component: EventForwarding, title: 'Event Forwarding', src: 'https://github.com/JazzyMcJazz/NodeDemo/tree/main/5._First-Svelte/svelte-self-study-1/src/pages/Events/EventForwarding'},
     				]
     			}
     		}
