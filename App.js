@@ -1,13 +1,20 @@
-import UserData from '/security/UserRepository.js';
+import helmet from "helmet";
+import cookieParser from 'cookie-parser';
+import bodyParser from "body-parser";
+import passport from "passport";
+import authRouter from "./routers/AuthRouter.js";
+import testRouter from './routers/TestRouter.js';
 
 import express from 'express';
 const app = express();
+app.use(express.json())
 
-import helmet from "helmet";
 app.use(helmet());
-
-import securityRouter from "./routers/SecurityRouter.js";
-app.use(securityRouter);
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use('/api/auth', authRouter);
+app.use(testRouter)
 
 const PORT = process.env.PORT | 3000;
 app.listen(PORT, err => {

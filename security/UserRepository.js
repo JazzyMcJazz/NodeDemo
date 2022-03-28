@@ -11,6 +11,10 @@ export async function save(user) {
     UserData.push({email: email, password: password});
 }
 
+export async function compare(user) {
+
+}
+
 async function encrypt(password) {
     return await bcrypt.hash(password, 12);
 }

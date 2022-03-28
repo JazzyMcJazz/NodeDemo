@@ -1,17 +1,14 @@
-import {checkUser, authLimiter} from "../security/Config.js";
+import {checkUser, secret} from "../security/AuthConfig.js";
 import jwt from 'jsonwebtoken';
+
 import express from 'express';
-const app = express();
 const router = express.Router();
 
-const basepath = '/api/auth';
-
-app.use(basepath + '/login', authLimiter)
-router.post(basepath + '/login', (req, res) => {
-    if (checkUser(req.body)) {
+router.post('/login', async (req, res) => {
+    if (await checkUser(req.body)) {
         let token = jwt.sign({
             data: req.body
-        }, 'secret', {expiresIn: '1h'});
+        }, secret.secretOrKey, {expiresIn: '1h'});
         res.cookie('jwt', token);
         res.send(`Log in success ${req.body.email}`);
 
