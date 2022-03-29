@@ -2,9 +2,10 @@ import {checkCredentials, getUserByEmail} from "./UserRepository.js";
 import jwt from "jsonwebtoken";
 import passport from 'passport';
 import passportJwt from 'passport-jwt';
+import rateLimit from "express-rate-limit";
 const JwtStrategy = passportJwt.Strategy;
 
-export const secret = {secretOrKey: 'super_duper_secret_2'}
+const secret = {secretOrKey: 'super_duper_secret_2'}
 
 const opts = {};
 opts.secretOrKey = secret.secretOrKey;
@@ -24,11 +25,11 @@ passport.use(new JwtStrategy(opts, async (jwt_payload, done) => {
         return done(null, false);
 }));
 
-
-import rateLimit from "express-rate-limit";
-export const authLimiter = rateLimit({
+const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 6, // maximum attempts per 15 minutes
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 })
+
+export {authLimiter, secret}

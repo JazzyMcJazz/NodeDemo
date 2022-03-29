@@ -6,6 +6,7 @@ import authRouter from "./routers/AuthRouter.js";
 import testRouter from './routers/TestRouter.js';
 
 import express from 'express';
+import {authLimiter} from "./security/AuthConfig.js";
 const app = express();
 
 app.use(express.json())
@@ -13,7 +14,9 @@ app.use(helmet());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(passport.initialize());
+app.use('/api/auth', authLimiter)
 app.use('/api/auth', authRouter);
+
 app.use(testRouter)
 
 const PORT = process.env.PORT | 3000;
