@@ -6,7 +6,17 @@ export const UserData = [
 ]
 
 export function getAllUsers() {
-    return UserData.map(user => {return {email: user.email, password: user.password}});
+    return UserData.map(user => {
+        const copy = {...user};
+        delete copy.password
+        return copy;
+    });
+}
+
+export function getUserByEmail(email) {
+    const user = {...UserData.find(user => user.email === email)};
+    delete user.password;
+    return user;
 }
 
 export async function save(user) {
@@ -22,7 +32,7 @@ export function existsByEmail(email) {
     return false;
 }
 
-export async function credentialsMatch(user) {
+export async function checkCredentials(user) {
     for (let i in UserData)
         if (user.email === UserData[i].email && await bcrypt.compare(user.password, UserData[i].password))
             return true;

@@ -1,5 +1,6 @@
 import express from "express";
 import passport from "passport";
+import {getAllUsers} from "../security/UserRepository.js";
 
 const router = express.Router();
 
@@ -14,10 +15,11 @@ router.get('/unauthorized', (req, res) => {
     res.send('Unauthorized')
 })
 
-
 router.get('/users', authenticate, (req, res) => {
-    console.log(req.user);
-    res.send();
+    if (req.user.role !== 'admin')
+        res.status(401).send('Unauthorized. Admin privileges required')
+    else
+        res.send(getAllUsers());
 })
 
 export default router;
