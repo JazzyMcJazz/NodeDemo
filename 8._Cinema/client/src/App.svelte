@@ -2,14 +2,15 @@
 	import {onMount} from "svelte";
 	import {baseURL} from "./stores/api-store";
 
-	let movies;
+	let movies = [];
 
+	// onMount executes
 	onMount(async () => {
 		const response = await fetch($baseURL + '/movies');
 		const { data } = await response.json();
 		movies = data;
-		console.log(data)
-	})
+		console.log(movies)
+	});
 </script>
 
 <main>
@@ -33,19 +34,22 @@
 
 </main>
 <footer>
-	Copywrite ASDF @ ASDF
+	©{new Date().getFullYear()}
+	About
+	Contact
 </footer>
 
 <style>
 	main {
-		min-height: calc(100vh);
 		text-align: center;
-		padding: 1em;
+		padding: 0;
 		max-width: 240px;
 		margin: 0 auto;
+		min-height: calc(100vh - 50px);
 	}
 
 	footer {
+		height: 50px;
 		background-color: green;
 	}
 
