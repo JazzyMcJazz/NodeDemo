@@ -5,6 +5,10 @@ const app = express();
 
 app.use(express.static('/public'));
 
+// __dirname can't be accessed when type 'module', so we use path instead (path.resolve('/path/to/file.html'))
+import path from 'path';
+
+
 import helmet from 'helmet';
 app.use(helmet());
 
