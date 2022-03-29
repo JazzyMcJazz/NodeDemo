@@ -7,8 +7,8 @@ import testRouter from './routers/TestRouter.js';
 
 import express from 'express';
 const app = express();
-app.use(express.json())
 
+app.use(express.json())
 app.use(helmet());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());

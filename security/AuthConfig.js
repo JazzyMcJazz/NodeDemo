@@ -10,39 +10,33 @@ opts.jwtFromRequest = req => {
     let token = null;
     if (req && req.cookies)
         token = req.cookies['jwt']
+
     return token;
 }
 
-
 passport.use(new JwtStrategy(opts, async (jwt_payload, done) => {
-    console.log('JWT BASED AUTH GETTING CALLED');
-    if (await checkUser(jwt_payload.data))
+    console.log(jwt_payload)
+    if (await credentialsMatch(jwt_payload.data))
         return done(null, jwt_payload.data)
     else
         return done(null, false);
 }));
 
-passport.serializeUser((user, done) => {
+passport.serializeUser(function(user, done) {
     done(null, user);
-})
+});
 
-passport.deserializeUser((obj, done) => {
-    done(null, obj)
-})
+passport.deserializeUser(function(obj, done) {
+    done(null, obj);
+});
+
 
 import rateLimit from "express-rate-limit";
+import {credentialsMatch} from "./UserRepository.js";
+import jwt from "jsonwebtoken";
 export const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 6, // maximum attempts per 15 minutes
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 })
-
-import {UserData} from "./UserRepository.js";
-import bcrypt from "bcrypt";
-export async function checkUser(user) {
-    for (let i in UserData)
-        if (user.email === UserData[i].email && await bcrypt.compare(user.password, UserData[i].password))
-            return true;
-    return false;
-}
