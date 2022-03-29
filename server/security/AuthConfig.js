@@ -16,10 +16,9 @@ opts.jwtFromRequest = req => {
     return token;
 }
 
-// this solution is not ideal since it requires that the plaintext password was used to generate the token
 passport.use(new JwtStrategy(opts, async (jwt_payload, done) => {
-    if (await checkCredentials(jwt_payload.data)) {
-        const user = getUserByEmail(jwt_payload.data.email); // user object without password
+    const user = await getUserByEmail(jwt_payload.data.email)
+    if (user) {
         return done(null, user);
     } else
         return done(null, false);

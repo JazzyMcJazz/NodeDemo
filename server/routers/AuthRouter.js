@@ -1,4 +1,4 @@
-import {checkCredentials, existsByEmail, save} from "../security/UserRepository.js";
+import {checkCredentials, existsByEmail, saveNewUser} from "../security/UserRepository.js";
 import {issueToken} from "../security/JwtToken.js";
 import jwt from 'jsonwebtoken';
 
@@ -19,7 +19,7 @@ router.post('/signup', async (req, res) => {
         res.status(302).send({message: 'Email already in use'});
 
     else {
-        await save(req.body);
+        await saveNewUser(req.body);
         const token = issueToken(req.body);
         res.cookie('jwt', token);
         res.send(`Successfully signed up with ${req.body.email}`);

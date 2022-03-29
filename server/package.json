@@ -5,7 +5,9 @@
   "main": "App.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env PORT=3000 DELETE_MODE=true ADMIN_PASS=1234 node ./database/CreateSchema.js & nodemon ./app.js",
+    "start": "node ./app.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,11 @@
     "helmet": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
     "passport": "^0.5.2",
-    "passport-jwt": "^4.0.0"
+    "passport-jwt": "^4.0.0",
+    "sqlite": "^4.0.25",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
