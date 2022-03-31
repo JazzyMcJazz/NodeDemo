@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env PORT=3000 DELETE_MODE=true ADMIN_PASS=1234 node ./database/CreateSchema.js & nodemon ./app.js",
-    "start": "node ./app.js"
+    "dev-new": "cross-env PORT=3000 DELETE_MODE=true INCLUDE_DUMMY_DATA=true ADMIN_PASS=1234 node ./database/CreateSchema.js & nodemon ./app.js",
+    "dev": "cross-env node ./database/CreateSchema.js & nodemon ./app.js",
+    "start": "cross-env node ./database/CreateSchema.js & node ./app.js"
   },
   "repository": {
     "type": "git",
@@ -23,10 +24,12 @@
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",
     "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-rate-limit": "^6.3.0",
     "helmet": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.7.3",
     "passport": "^0.5.2",
     "passport-jwt": "^4.0.0",
     "sqlite": "^4.0.25",

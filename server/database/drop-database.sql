@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS most_popular;
+DROP TABLE IF EXISTS user_course;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS verification_token;
+DROP TABLE IF EXISTS user;

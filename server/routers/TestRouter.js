@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-import {getAllUsers} from "../security/UserRepository.js";
+import {getAllUsers} from "../repository/UserRepo.js";
 
 const router = express.Router();
 

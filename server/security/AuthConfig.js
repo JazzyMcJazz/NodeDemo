@@ -1,11 +1,13 @@
-import {checkCredentials, getUserByEmail} from "./UserRepository.js";
+import {getUserByEmail} from "../repository/UserRepo.js";
 import jwt from "jsonwebtoken";
 import passport from 'passport';
 import passportJwt from 'passport-jwt';
 import rateLimit from "express-rate-limit";
+import 'dotenv/config';
+
 const JwtStrategy = passportJwt.Strategy;
 
-const secret = {secretOrKey: 'super_duper_secret_2'}
+const secret = {secretOrKey: process.env.JWT_SECRET || 'not_so_secret_:('}
 
 const opts = {};
 opts.secretOrKey = secret.secretOrKey;

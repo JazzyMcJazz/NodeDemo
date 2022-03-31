@@ -2,13 +2,13 @@ import bcrypt from 'bcrypt';
 import {db} from "../database/Connection.js";
 
 export async function getAllUsers() {
-    const users = await db.all('SELECT * FROM users');
+    const users = await db.all('SELECT * FROM user');
     users.forEach(user => delete user.password); // alternatively don't SELECT all,
     return users;
 }
 
 export async function getUserByEmail(email) {
-    const user = await db.get('SELECT * FROM users WHERE email = ?', [email])
+    const user = await db.get('SELECT * FROM user WHERE email = ?', [email])
     if (user !== undefined) delete user.password;
     return user;
 }
@@ -24,13 +24,14 @@ export async function saveNewUser(user) {
     keys.forEach(() => psv += '?, ');
     psv = psv.slice(0, psv.length-2)
 
-    const sql = 'INSERT INTO users (' + keys + ') VALUES (' + psv + ')';
+    const sql = `INSERT INTO user (${keys}) VALUES (${psv})`;
     const stmt = await db.prepare(sql)
     await stmt.bind(values);
 
     try {
         const result = await stmt.run();
-        console.log(result)
+        return result.lastID;
+
     } catch (err) {
         return { err: { errno: err.errno, message: err.message } }
     }
@@ -56,7 +57,7 @@ export async function updateUser(user) {
         if (keys[i] !== 'id') preparedValues += keys[i] + ' = ?, '
     preparedValues = preparedValues.slice(0, preparedValues.length-2);
 
-    const sql = 'UPDATE users SET ' + preparedValues + ' WHERE id = ?'
+    const sql = `UPDATE user SET ${preparedValues} WHERE id = ?`
     const stmt = await db.prepare(sql)
     await stmt.bind(values);
 
@@ -70,13 +71,13 @@ export async function updateUser(user) {
 
 }
 
-export async function existsByEmail(email) {
-    const user = await db.get('SELECT email FROM users WHERE email = ?', [email])
+export async function userExistsByEmail(email) {
+    const user = await db.get('SELECT email FROM user WHERE email = ?', [email])
     return user !== undefined
 }
 
-export async function checkCredentials(user) {
-    const userFromDb = await db.get('SELECT email, password FROM users WHERE email = ?', [user.email])
+export async function checkUserCredentials(user) {
+    const userFromDb = await db.get('SELECT email, password FROM user WHERE email = ?', [user.email])
     if (userFromDb === undefined) return false
     return await bcrypt.compare(user.password, userFromDb.password)
 }
