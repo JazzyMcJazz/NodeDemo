@@ -21,7 +21,6 @@
         <span id="auto-scroller" in:fade={{duration: 200}} out:fade on:click={scrollTop}><MdArrowDropUp/></span>
     {/if}
     <main>
-
         <nav id="nav" class="">
             <div class="nav-section left">
                 <Link to="/"><div class="nav-icon"><MdMenu/></div></Link>
@@ -36,7 +35,7 @@
         </nav>
 
         <Route path="/" component={Home}/>
-        <Route path="/login"><Auth/></Route>
+        <Route path="/login" component={Auth}/>
     </main>
 
     <footer>

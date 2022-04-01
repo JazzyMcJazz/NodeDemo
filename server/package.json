@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-new": "cross-env PORT=3000 DELETE_MODE=true INCLUDE_DUMMY_DATA=true ADMIN_PASS=1234 node ./database/CreateSchema.js & nodemon ./app.js",
+    "dev-new": "cross-env DELETE_MODE=true INCLUDE_DUMMY_DATA=true ADMIN_PASS=1234 node ./database/CreateSchema.js & nodemon ./app.js",
     "dev": "cross-env node ./database/CreateSchema.js & nodemon ./app.js",
     "start": "cross-env node ./database/CreateSchema.js & node ./app.js"
   },

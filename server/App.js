@@ -7,8 +7,8 @@ import {authLimiter} from "./security/AuthConfig.js";
 import AuthRouter from "./routers/AuthRouter.js";
 import CourseRouter from './routers/CourseRouter.js';
 import CategoryRouter from './routers/CategoryRouter.js';
-import testRouter from "./routers/TestRouter.js";
 import express from 'express';
+import testRouter from "./routers/TestRouter.js";
 
 const app = express();
 
@@ -22,9 +22,12 @@ app.use('/api/auth', AuthRouter);
 app.use('/api/courses', CourseRouter);
 app.use('/api/categories', CategoryRouter);
 app.use(express.static(path.resolve('../client/public')));
-// app.get('*', (req, res) => res.sendFile(path.resolve('../client/public/index.html')))
 
-app.use(testRouter)
+app.get('*', (req, res) => res.sendFile(path.resolve('../client/public/index.html')))
+
+
+
+// app.use(testRouter)
 
 // if you change default port it must also be changed in ./router/AuthRouter.js:37:75
 const PORT = process.env.PORT || 3000;
