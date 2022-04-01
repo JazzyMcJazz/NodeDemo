@@ -14,6 +14,7 @@
 </script>
 
 <main>
+	<img src="https://www.naturepaysage.photo/wp-content/uploads/cours_photo_pose_longue-2.jpg"/>
 	<table>
 		<thead>
 			<tr>
