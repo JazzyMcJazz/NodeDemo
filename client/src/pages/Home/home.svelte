@@ -2,8 +2,7 @@
     import HomeSection from "../../components/HomeSection/HomeSection.svelte";
     import {onMount} from "svelte";
     import {base_url} from "../../stores/general-store";
-
-    export let location, navigate, to; // props passed by Router;
+    import HomeBanner from "../../components/HomeSection/HomeBanner.svelte";
 
     let mostPopularCourses = [];
     let newCourses = [];
@@ -18,12 +17,9 @@
         response = await fetch(url);
         data = await response.json();
         newCourses = data.data;
-    })
+    });
 </script>
 
+<HomeBanner/>
 <HomeSection title={"Most Popular Courses"} courses={mostPopularCourses}/>
 <HomeSection title={"New Courses"} courses={newCourses}/>
-
-<style>
-
-</style>

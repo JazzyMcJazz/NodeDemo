@@ -12,7 +12,6 @@ import express from 'express';
 
 const app = express();
 
-app.use(express.static(path.resolve('../client/public')));
 app.use(express.json());
 app.use(helmet());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -22,6 +21,8 @@ app.use('/api/auth', authLimiter);
 app.use('/api/auth', AuthRouter);
 app.use('/api/courses', CourseRouter);
 app.use('/api/categories', CategoryRouter);
+app.use(express.static(path.resolve('../client/public')));
+// app.get('*', (req, res) => res.sendFile(path.resolve('../client/public/index.html')))
 
 app.use(testRouter)
 
