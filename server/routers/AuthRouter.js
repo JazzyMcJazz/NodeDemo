@@ -18,11 +18,12 @@ router.post('/login', async (req, res) => {
     if (await checkUserCredentials(req.body)) {
         let token = issueToken(req.body);
         res.cookie('jwt', token);
-        console.log('Verified')
+        console.log(`[${new Date().toLocaleString()}] AUTH: ${req.body.email} logged in`)
         return res.send({message: `${req.body.email} successfully logged in`
     });
     }
 
+    console.log(`[${new Date().toLocaleString()}] AUTH: Login attempt unauthorized`)
     res.status(401).send({message: 'Email or password is incorrect'});
 });
 
@@ -59,6 +60,7 @@ router.get('/verify/:id/:token', async (req, res) => {
     await updateUser({id: user_id, verified: 1});
     await removeVerificationTokenByUser_id(user_id);
 
+    console.log(`[${new Date().toLocaleString()}] AUTH: User verified their email`)
     res.send({message: 'Account Verification Successful'});
 });
 

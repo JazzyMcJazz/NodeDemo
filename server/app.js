@@ -32,5 +32,5 @@ app.use(testRouter)
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, err => {
     if (err) console.log(err);
-    else console.log("SERVER~: Server running on port", PORT)
+    else console.log(`[${new Date().toLocaleString()}] SERVER: Server running on port`, PORT)
 });

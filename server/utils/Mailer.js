@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 
 transporter.verify((err) => {
     if (err) console.log(err)
-    else     console.log('MAILER~: Mail Server is ready')
+    else     console.log(`[${new Date().toLocaleString()}] MAILER: Mail Server is ready`)
 });
 
 export const sendMail = (to, subject, html) => {
