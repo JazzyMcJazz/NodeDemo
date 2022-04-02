@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import passport from 'passport';
 import passportJwt from 'passport-jwt';
 import rateLimit from "express-rate-limit";
-import 'dotenv/config';
+// import 'dotenv/config';
 
 const JwtStrategy = passportJwt.Strategy;
 

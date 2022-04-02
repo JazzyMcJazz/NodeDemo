@@ -18,11 +18,12 @@ router.post('/login', async (req, res) => {
     if (await checkUserCredentials(req.body)) {
         let token = issueToken(req.body);
         res.cookie('jwt', token);
+        console.log('Verified')
         return res.send({message: `${req.body.email} successfully logged in`
     });
     }
 
-    res.status(401).send({message: 'Invalid user credentials'});
+    res.status(401).send({message: 'Email or password is incorrect'});
 });
 
 router.post('/signup', async (req, res) => {

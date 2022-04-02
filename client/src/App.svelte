@@ -4,13 +4,11 @@
     import MdMenu from 'svelte-icons/md/MdMenu.svelte';
     import MdShoppingCart from 'svelte-icons/md/MdShoppingCart.svelte';
     import MdAccountBox from 'svelte-icons/md/MdAccountBox.svelte';
-    import MdEmail from 'svelte-icons/md/MdEmail.svelte';
-    import MdPhone from 'svelte-icons/md/MdPhone.svelte';
-    import MdWatchLater from 'svelte-icons/md/MdWatchLater.svelte';
     import MdArrowDropUp from 'svelte-icons/md/MdArrowDropUp.svelte';
-
     import Home from './pages/Home/home.svelte'
     import Auth from "./pages/Auth/Auth.svelte";
+    import Footer from "./components/Footer/Footer.svelte";
+    import {jwtToken} from "./stores/cookie-store";
 
     let scrollY;
     const scrollTop = () => window.scrollTo({top: 0, left: 0, behavior: "smooth"});
@@ -30,55 +28,15 @@
             </div>
             <div class="nav-section right">
                 <Link to="/"><div class="nav-icon"><MdShoppingCart/></div></Link>
-                <Link to="/login"><div class="nav-icon"><MdAccountBox/></div></Link>
+                <Link to="/authentication"><div class="nav-icon"><MdAccountBox/></div></Link>
             </div>
         </nav>
 
         <Route path="/" component={Home}/>
-        <Route path="/login" component={Auth}/>
+        <Route path={"/authentication"} component={Auth}/>
     </main>
 
-    <footer>
-        <div class="grid-box">
-            <table>
-                <thead><tr><th>Contact</th></tr></thead>
-                <tbody>
-                    <tr><td><div class="footer-icon"><MdEmail/></div>keastore@riel.expert</td></tr>
-                    <tr><td><div class="footer-icon"><MdPhone/></div>+45 1234 5678</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="grid-box">
-            <table>
-                <thead><tr><th colspan="2">Opening Hours</th></tr></thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <div class="footer-icon"><MdWatchLater/></div>
-                        <div>Mon-Fri:</div>
-                    </td>
-                    <td>10-18</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="footer-icon"></div>
-                        <div>Sat:</div>
-                    </td>
-                    <td>10-16</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="footer-icon"></div>
-                        <div>Sun:</div>
-                    </td>
-                    <td>Closed</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="full-width">©{new Date().getFullYear()} Kea Store</div>
-    </footer>
+    <Footer/>
 </Router>
 
 <svelte:window bind:scrollY={scrollY}/>
@@ -86,7 +44,7 @@
 <style>
 
     main {
-        min-height: calc(100vh - 180px - 45px);
+        min-height: calc(100vh - 180px);
     }
 
 	nav {
@@ -128,42 +86,6 @@
     }
 
     .logo div { height: fit-content }
-
-    footer {
-        background-color: #383838;
-        height: 180px;
-        display: grid;
-        grid-template-columns: 50% 50%;
-        color: white;
-        font-size: 0.85em;
-    }
-
-    table {
-        text-align: left;
-    }
-
-    tr, td {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .footer-icon {
-        height: 16px;
-        width: 16px;
-        margin-right: 5px;
-    }
-
-    .grid-box {
-        display: flex;
-        justify-content: center;
-        margin-top: 30px;
-    }
-
-    .full-width {
-        grid-column: span 2;
-        text-align: center;
-    }
 
     #auto-scroller {
         background-color: yellowgreen;

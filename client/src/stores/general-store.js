@@ -1,4 +1,4 @@
-import {writable} from "svelte/store";
+import {readable} from "svelte/store";
 
-export const base_url = writable(`${window.location.origin}/api`);
-export const fallback_img = writable('/img/kea-logo.jpg');
+export const base_url = readable(`${window.location.origin}/api`);
+export const fallback_img = readable('/img/kea-logo.jpg');

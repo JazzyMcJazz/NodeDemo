@@ -1,4 +1,5 @@
 <script>
+
     import HomeSection from "../../components/HomeSection/HomeSection.svelte";
     import {onMount} from "svelte";
     import {base_url} from "../../stores/general-store";
