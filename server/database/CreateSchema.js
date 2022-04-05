@@ -21,10 +21,8 @@ if (deleteMode === 'true') {
     const password = await bcrypt.hash(process.env.ADMIN_PASS || '1234', 12);
     const role = 'admin'
 
-    await db.run(`INSERT INTO user (email, password, role) VALUES (?, ?, ?)`, [email, password, role]);
+    await db.run(`INSERT INTO user (email, password, role, verified) VALUES (?, ?, ?, ?)`, [email, password, role, 1]);
     console.log('ADMIN USER CREATED')
-
-
 }
 
 if (includeDummyData === 'true') {
