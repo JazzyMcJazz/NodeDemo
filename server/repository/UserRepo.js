@@ -1,19 +1,27 @@
 import bcrypt from 'bcrypt';
 import {db} from "../database/Connection.js";
 
-export async function getAllUsers() {
+async function getAllUsers() {
     const users = await db.all('SELECT * FROM user');
     users.forEach(user => delete user.password); // alternatively don't SELECT all,
     return users;
 }
 
-export async function getUserByEmail(email) {
+
+
+async function getUserById(id) {
+    const user = await db.get('SELECT * FROM user WHERE id = ?', id);
+    if (user !== undefined) delete user.password;
+    return user;
+}
+
+async function getUserByEmail(email) {
     const user = await db.get('SELECT * FROM user WHERE email = ?', [email])
     if (user !== undefined) delete user.password;
     return user;
 }
 
-export async function saveNewUser(user) {
+async function saveNewUser(user) {
     if (user.password) user.password = await encrypt(user.password); // encrypt password
 
     const keys = Object.keys(user);
@@ -37,7 +45,7 @@ export async function saveNewUser(user) {
     }
 }
 
-export async function updateUser(user) {
+async function updateUser(user) {
     if (user.password) user.password = encrypt(user.password); // encrypt password
 
     // move id to bottom of object.
@@ -71,18 +79,27 @@ export async function updateUser(user) {
 
 }
 
-export async function userExistsByEmail(email) {
+async function userExistsByEmail(email) {
     const user = await db.get('SELECT email FROM user WHERE email = ?', [email])
     return user !== undefined
 }
 
-export async function checkUserCredentials(user) {
-    const userFromDb = await db.get('SELECT email, password FROM user WHERE email = ?', [user.email])
-    if (userFromDb === undefined) return false
-    return await bcrypt.compare(user.password, userFromDb.password)
+async function checkUserCredentialsAndReturnUser(user) {
+    const userFromDb = await db.get('SELECT email, password, enabled FROM user WHERE email = ?', [user.email])
+    if (userFromDb)
+        if (await bcrypt.compare(user.password, userFromDb.password) && userFromDb.enabled) {
+            delete userFromDb.password;
+            return userFromDb;
+        }
+    return false
 }
 
 // oneliner, but this way the number of salt rounds is constant without using a const
 async function encrypt(password) {
     return await bcrypt.hash(password, 12);
+}
+
+export {
+    getAllUsers, getUserById, getUserByEmail, saveNewUser,
+    updateUser, userExistsByEmail, checkUserCredentialsAndReturnUser
 }
