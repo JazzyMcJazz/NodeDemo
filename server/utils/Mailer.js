@@ -1,5 +1,4 @@
 import nodemailer from 'nodemailer';
-import 'dotenv/config';
 
 const HOST = process.env.MAIL_HOST;
 const USER = process.env.MAIL_USER;
