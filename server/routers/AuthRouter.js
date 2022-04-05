@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {checkUserCredentials, userExistsByEmail, saveNewUser, updateUser} from "../repository/UserRepo.js";
+import {checkUserCredentialsAndReturnUser, userExistsByEmail, saveNewUser, updateUser} from "../repository/UserRepo.js";
 import {issueToken} from "../security/JwtToken.js";
 import jwt from 'jsonwebtoken';
 import * as crypto from "crypto";
@@ -15,7 +15,7 @@ const router = Router();
 // All endpoint are preceded by /api/auth
 
 router.post('/login', async (req, res) => {
-    if (await checkUserCredentials(req.body)) {
+    if (await checkUserCredentialsAndReturnUser(req.body)) {
         let token = issueToken(req.body);
         res.cookie('jwt', token);
         console.log(`[${new Date().toLocaleString()}] AUTH: ${req.body.email} logged in`)

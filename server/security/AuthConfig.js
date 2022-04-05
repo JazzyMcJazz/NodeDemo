@@ -19,11 +19,12 @@ opts.jwtFromRequest = req => {
 }
 
 passport.use(new JwtStrategy(opts, async (jwt_payload, done) => {
-    const user = await getUserByEmail(jwt_payload.data.email)
-    if (user) {
-        return done(null, user);
-    } else
-        return done(null, false);
+    const user = await getUserByEmail(jwt_payload.data.email);
+    if (user)
+        if (user.enabled)
+            return done(null, user);
+
+    return done(null, false);
 }));
 
 const authLimiter = rateLimit({
@@ -31,6 +32,8 @@ const authLimiter = rateLimit({
     max: 6, // maximum attempts per 15 minutes
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-})
+});
 
-export {authLimiter, secret}
+const authenticate = passport.authenticate('jwt', {session: false});
+
+export {authLimiter, secret, authenticate}
