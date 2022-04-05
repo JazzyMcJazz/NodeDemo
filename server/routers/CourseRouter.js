@@ -56,15 +56,18 @@ router.get('/id/:id', async (req, res) => {
 
     const data = await getCourseById(id);
 
-    if (!data) res.status(404).send({message: `No course found with that id`});
-    else {
-        // remove sensitive data for non-admins
-        passport.authenticate('jwt', {session: false}, (_, user) => {
-            if (!user && user.role !== 'admin') delete data.number_of_purchases;
-        })(req, res);
-
-        res.send({data: data});
+    if (!data) {
+        res.status(404).send({message: `No course found with that id`});
+        return;
     }
+
+    // remove sensitive data for non-admins
+    passport.authenticate('jwt', {session: false}, (_, user) => {
+        if (!user && user.role !== 'admin') delete data.number_of_purchases;
+    })(req, res);
+
+    res.send({data: data});
+
 })
 
 router.get('/category/:id', async (req, res) => {
@@ -72,15 +75,18 @@ router.get('/category/:id', async (req, res) => {
 
     const data = await getCoursesByCategory_id(id);
 
-    if (data.length) res.status(404).send({message: `No course found with that category id`});
-    else {
-        // remove sensitive data for non-admins
-        passport.authenticate('jwt', {session: false}, (_, user) => {
-            if (!user && user.role !== 'admin') data.forEach(course => delete course.number_of_purchases);
-        })(req, res);
-
-        res.send({data: data});
+    if (data.length < 1) {
+        res.status(404).send({message: `No course found with that category id`});
+        return;
     }
+
+    // remove sensitive data for non-admins
+    passport.authenticate('jwt', {session: false}, (_, user) => {
+        if (!user && user.role !== 'admin') data.forEach(course => delete course.number_of_purchases);
+    })(req, res);
+
+    res.send({data: data});
+
 })
 
 export default router;
