@@ -1,0 +1,13 @@
+COLLECTIONS
+{
+    key: "value"
+}
+
+C  -- db.[collection-name].insert
+R  -- db.[collection-name].find
+U  -- update
+D  -- delete / remove
+
+
+
+// odm

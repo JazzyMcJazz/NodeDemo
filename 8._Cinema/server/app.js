@@ -1,4 +1,5 @@
 import MovieRouter from "./routers/MovieRouter.js";
+import 'dotenv/config';
 
 import express from 'express';
 const app = express();
