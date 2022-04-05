@@ -10,7 +10,7 @@ import passport from "passport";
 
 const router = Router();
 
-// All endpoint are preceded by /api/courses
+// All endpoints are preceded by /api/courses
 
 // TODO: POST, UPDATE, PATCH, DELETE endpoints
 // Currently no plans for the front-end application to use these
