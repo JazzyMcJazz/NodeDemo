@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import helmet from "helmet";
 import cookieParser from 'cookie-parser';
 import path from 'path';
@@ -9,6 +10,7 @@ import CourseRouter from './routers/CourseRouter.js';
 import CategoryRouter from './routers/CategoryRouter.js';
 import express from 'express';
 import testRouter from "./routers/TestRouter.js";
+import UserRouter from "./routers/UserRouter.js";
 
 const app = express();
 
@@ -17,18 +19,18 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(passport.initialize());
 
-app.use('/api', helmet()); // restrict headers to /api endpoints
+app.use('/api', helmet()); // restrict helmet headers to /api endpoints
 // app.use('/api/auth', authLimiter); // limit requests to 6 per 15 minutes
 app.use('/api/auth', AuthRouter);
 app.use('/api/courses', CourseRouter);
 app.use('/api/categories', CategoryRouter);
-app.use('/api/auth', AuthRouter);
+app.use('/api/users', UserRouter);
 
 app.use(express.static(path.resolve('../client/public')));
 app.get('*', (req, res) => res.sendFile(path.resolve('../client/public/index.html')))
 
 app.use(testRouter)
-// if you change default port it must also be changed in ./router/AuthRouter.js:37:75
+// if you change default port it must also be changed in ./router/AuthRouter.js:42:86
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, err => {
     if (err) console.log(err);
