@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 
 app.use('/api', helmet()); // restrict helmet headers to /api endpoints
-// app.use('/api/auth', authLimiter); // limit requests to 6 per 15 minutes
+app.use('/api/auth', authLimiter); // limit requests to 6 per 15 minutes
 app.use('/api/auth', AuthRouter);
 app.use('/api/courses', CourseRouter);
 app.use('/api/categories', CategoryRouter);

@@ -10,14 +10,14 @@ router.get('/', authenticate, async (req, res) => {
     const user = req.user;
     if (user.role === 'admin')
         if (user.verified)
-            res.send(await getAllUsers());
+            res.send({data: await getAllUsers()});
         else res.status(401).send({message: 'You must verify your account to access this information'})
     else
         res.status(401).send({message: 'Unauthorized. Admin privileges required'})
 });
 
 router.get('/self', authenticate, async (req, res) => {
-    res.send(req.user)
+    res.send({data: req.user})
 });
 
 export default router;

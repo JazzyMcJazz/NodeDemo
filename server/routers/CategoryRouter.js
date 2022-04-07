@@ -6,7 +6,7 @@ const router = Router();
 // All endpoints are preceded by /api/categories
 
 router.get('/', async (req, res) => {
-    res.send(await getAllCategories());
+    res.send({data: await getAllCategories()});
 });
 
 export default router;

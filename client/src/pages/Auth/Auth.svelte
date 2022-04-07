@@ -1,14 +1,14 @@
 <script>
     import {base_url} from "../../stores/general-store";
-    import {jwtToken} from "../../stores/cookie-store";
+    import {getCookie, jwtToken} from "../../stores/cookie-store";
 
-    // block page load until it's been verified user is logged out
-    let isAuth = true;
-    $jwtToken ? window.location.assign('/') : isAuth = false;
+    // block page load until it's been verified user is not logged in
+    let isLoggedIn = true;
+    $: $jwtToken ? window.location.assign('/') : isLoggedIn = false;
 
     let isLogin = true;
-    let email = '';
-    let password = '';
+    let email = 'admin@test.dk';
+    let password = '1234';
 
     let is401 = false;
     let message = '';
@@ -36,11 +36,11 @@
             return;
         }
 
-        window.location.assign('/');
+        jwtToken.set(getCookie('jwt'));
     }
 
 </script>
-{#if !isAuth}
+{#if !isLoggedIn}
     <div class="container">
         <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
         {#if is401}

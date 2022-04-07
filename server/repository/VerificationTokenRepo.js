@@ -9,6 +9,10 @@ export async function checkVerificationToken(user_id, token) {
 }
 
 export async function saveNewVerificationToken(user_id, token) {
+    const existingToken = getVerificationTokenByUser_id(user_id);
+    if (existingToken)
+        await db.run('UPDATE verification_token SET token = ? WHERE user_id = ?', [token, user_id])
+    else
         await db.run('INSERT INTO verification_token (user_id, token) VALUES (?, ?)', [user_id, token]);
 }
 

@@ -9,6 +9,7 @@ import {
     saveNewVerificationToken
 } from "../repository/VerificationTokenRepo.js";
 import {sendMail} from "../utils/Mailer.js";
+import {authenticate} from "../security/AuthConfig.js";
 
 const router = Router();
 
@@ -16,8 +17,7 @@ const router = Router();
 
 router.post('/login', async (req, res) => {
     if (await checkUserCredentialsAndReturnUser(req.body)) {
-        let token = issueToken(req.body);
-        res.cookie('jwt', token);
+        res.cookie('jwt', issueToken(req.body), {expires: new Date(Date.now() + 604800000)});
         console.log(`[${new Date().toLocaleString()}] AUTH: ${req.body.email} logged in`)
         return res.send({message: `${req.body.email} successfully logged in`
     });
@@ -33,19 +33,11 @@ router.post('/signup', async (req, res) => {
     if (await userExistsByEmail(req.body.email))
         return res.status(302).send({message: 'Email already in use'});
 
-    // save token for account verification
-    const user_id = await saveNewUser(req.body);
-    const verificationToken = crypto.randomBytes(16).toString('hex');
-    await saveNewVerificationToken(user_id, verificationToken);
+    req.body.id = await saveNewUser(req.body);
 
-    // send account verification email
-    const BASE_URL = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
-    const link = `${BASE_URL}/api/auth/verify/${user_id}/${verificationToken}`;
-    const html = `<p>Click link to verify your account</p><a href="${link}" target="_blank">${link}</a>`
-    await sendMail(req.body.email, 'Verify Account', html);
+    await sendVerificationEmail(req.body);
 
-    const jwtToken = issueToken(req.body);
-    res.cookie('jwt', jwtToken);
+    res.cookie('jwt', issueToken(req.body), {expires: new Date(Date.now() + 604800000)});
     res.send({message: `Successfully signed. A verification link has been sent to ${req.body.email}`});
 });
 
@@ -63,5 +55,28 @@ router.get('/verify/:id/:token', async (req, res) => {
     console.log(`[${new Date().toLocaleString()}] AUTH: User verified their email`)
     res.send({message: 'Account Verification Successful'});
 });
+
+router.get('/request-verification-email', authenticate, async (req, res) => {
+    if (req.user.verified) {
+        res.send({error: true, message: 'user has already been verified'});
+        return;
+    }
+
+    await sendVerificationEmail(req.user);
+    res.send({});
+});
+
+async function sendVerificationEmail(user) {
+
+    // generate and save token for account verification
+    const verificationToken = crypto.randomBytes(16).toString('hex');
+    await saveNewVerificationToken(user.id, verificationToken);
+
+    // send account verification email
+    const BASE_URL = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
+    const link = `${BASE_URL}/api/auth/verify/${user.id}/${verificationToken}`;
+    const html = `<p>Click link to verify your account</p><a href="${link}" target="_blank">${link}</a>`
+    await sendMail(user.email, 'Verify Account', html);
+}
 
 export default router;

@@ -1,9 +1,18 @@
 <script>
     import Course from "./Course.svelte";
     import {Link} from "svelte-navigator";
+    import {onMount} from "svelte";
 
     export let title;
-    export let courses = [];
+    export let url;
+
+    let courses = [];
+
+    onMount(async () => {
+        const response = await fetch(url);
+        const data = await response.json();
+        courses = data.data;
+    });
 </script>
 
 <div class="header">{title}</div>
@@ -12,7 +21,7 @@
     {#each courses as course}
         <Link to={`/courses/${course.id}`}>
             <div class="course">
-                <Course course={course}/>
+                <Course {course}/>
             </div>
         </Link>
     {/each}

@@ -11,11 +11,6 @@ router.get('/unauthorized', (req, res) => {
     res.send('Unauthorized')
 })
 
-router.get('/users', authenticate, async (req, res) => {
-    if (req.user.role !== 'admin')
-        res.status(401).send('Unauthorized. Admin privileges required')
-    else
-        res.send(await getAllUsers());
-})
+
 
 export default router;

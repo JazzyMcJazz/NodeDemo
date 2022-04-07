@@ -72,6 +72,7 @@
         grid-template-columns: 50% 50%;
         color: white;
         font-size: 0.85em;
+        margin-top: 50px;
     }
 
     .footer-icon {

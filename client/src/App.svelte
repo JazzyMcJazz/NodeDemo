@@ -1,39 +1,38 @@
 <script>
-    import {Router, Link, Route} from "svelte-navigator";
+    import {Router, Route} from "svelte-navigator";
+    import {swipe} from 'svelte-gestures';
     import {fade} from 'svelte/transition';
-    import MdMenu from 'svelte-icons/md/MdMenu.svelte';
-    import MdShoppingCart from 'svelte-icons/md/MdShoppingCart.svelte';
-    import MdAccountBox from 'svelte-icons/md/MdAccountBox.svelte';
     import MdArrowDropUp from 'svelte-icons/md/MdArrowDropUp.svelte';
-    import Home from './pages/Home/home.svelte'
+    import Navbar from "./components/Navbar/Navbar.svelte";
+    import Home from './pages/Home/Home.svelte'
     import Auth from "./pages/Auth/Auth.svelte";
+    import Profile from "./pages/Profile/Profile.svelte";
+    import Course from "./pages/Course/Course.svelte";
     import Footer from "./components/Footer/Footer.svelte";
-    import {jwtToken} from "./stores/cookie-store";
 
     let scrollY;
     const scrollTop = () => window.scrollTo({top: 0, left: 0, behavior: "smooth"});
+
+    let open = false; // sidebar
+
+    // handles opening the sidebar by swiping
+    const swipeOptions = {timeframe: 300, minSwipeDistance: 60, touchAction: 'pan-y'};
+    function handleSwipe(e) {
+        if (e.detail.direction === 'left') open = false;
+        else if (e.detail.direction === 'right') open = true;
+    }
 </script>
 
 <Router primary={false}>
     {#if scrollY > 250}
         <span id="auto-scroller" in:fade={{duration: 200}} out:fade on:click={scrollTop}><MdArrowDropUp/></span>
     {/if}
-    <main>
-        <nav id="nav" class="">
-            <div class="nav-section left">
-                <Link to="/"><div class="nav-icon"><MdMenu/></div></Link>
-            </div>
-            <div class="nav-section center">
-                <Link to="/"><div class="logo"><div>Kea Store</div></div></Link>
-            </div>
-            <div class="nav-section right">
-                <Link to="/"><div class="nav-icon"><MdShoppingCart/></div></Link>
-                <Link to="/authentication"><div class="nav-icon"><MdAccountBox/></div></Link>
-            </div>
-        </nav>
-
+    <main use:swipe={swipeOptions} on:swipe={handleSwipe}>
+        <Navbar bind:open/>
         <Route path="/" component={Home}/>
-        <Route path={"/authentication"} component={Auth}/>
+        <Route path="/authentication" component={Auth}/>
+        <Route path="/profile" component={Profile}/>
+        <Route path="/courses/:id" component={Course}/>
     </main>
 
     <Footer/>
@@ -45,44 +44,6 @@
 
     main {
         min-height: calc(100vh - 180px);
-    }
-
-	nav {
-		background-color: #FF0000;
-        top: 0;
-        padding: 0 5px;
-        display: grid;
-        grid-template-columns: 33% 33% 33%;
-        height: 45px;
-        align-content: center;
-	}
-
-    .nav-icon {
-        display: contents;
-        color: white;
-    }
-
-    .nav-section {
-        display: flex;
-        justify-items: center;
-        width: 100%;
-        padding: 5px 0;
-        object-fit: contain;
-        max-height: 35px;
-    }
-
-    .left {justify-content: start}
-    .center {justify-content: center}
-    .right {justify-content: end}
-
-    .logo {
-        font-size: 1.5em;
-        font-family: Consolas,serif;
-        color: white;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
     }
 
     .logo div { height: fit-content }
