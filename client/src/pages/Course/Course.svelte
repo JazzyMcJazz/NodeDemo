@@ -1,13 +1,12 @@
 <script>
 
     import {onMount} from "svelte";
-    import {base_url} from "../../stores/general-store";
+    import {base_url, fallback_img} from "../../stores/general-store";
     import NotFound from "../../components/NotFound/NotFound.svelte";
     import AddToBasketButton from "../../components/Buttons/AddToBasketButton.svelte";
-    import {basket, getCookie} from "../../stores/cookie-store";
+    import {addToBasket, getBasket, removeFromBasket} from "../../stores/cookie-store";
 
-    const path = window.location.pathname;
-    const id = path.substring(path.lastIndexOf('/') + 1);
+    export let id;
 
     let isFetched = false;
     let is404 = false;
@@ -27,33 +26,16 @@
         title = course.title;
         description = course.description;
         price = course.price;
-        image_url = course.image_url;
+        image_url = course.image_url ? course.image_url : $fallback_img;
 
         isFetched = true;
-    })
+    });
 
-
-    function addToBasket() {
-
-        let items = [];
-        if (!!$basket) items = $basket.split(',')
-
-        for (let i in items) {
-            let item = items[i].split('x');
-            if (item[0] == id) {
-                item[1] = Number.parseInt(item[1]) + 1;
-                items[i] = `${item[0]}x${item[1]}`;
-                document.cookie = `basket=${items}`;
-                basket.set(getCookie('basket'));
-                window.location.assign('/basket');
-                return;
-            }
-        }
-
-        items.push(`${id}x${1}`);
-        document.cookie = `basket=${items}`;
-        basket.set(getCookie('basket'));
-        window.location.assign('/basket');
+    let isInBasket = getBasket().includes(id.toString());
+    function handleBasketButton() {
+        isInBasket
+            ? isInBasket = removeFromBasket(id) // remove from basket
+            : isInBasket = addToBasket(id);
     }
 </script>
 
@@ -67,18 +49,22 @@
             <div class="description">
                 <p>{description}</p>
             </div>
-            <p class="price">{price.toLocaleString()}</p>
-            <AddToBasketButton onclick={addToBasket}/>
+            <p class="price">{price.toLocaleString()} <span>DKK</span></p>
+            <div class="basket-button"><AddToBasketButton {isInBasket} onclick={handleBasketButton}/></div>
         </div>
     {/if}
 {/if}
 <style>
     .content {
         text-align: center;
+        background-color: white;
+        margin: 10px 0 10px 0;
+        padding: 5px 0 20px 0;
     }
 
     h3 {
-        margin: 10px 0;
+        margin: 0;
+        padding: 0 0 10px 0;
     }
 
     img {
@@ -98,5 +84,14 @@
         font-size: 1.8em;
         font-weight: bold;
         margin-top: 50px;
+    }
+
+    span {
+        font-size: 0.5em;
+    }
+
+    .basket-button {
+        display: flex;
+        justify-content: center;
     }
 </style>

@@ -1,11 +1,12 @@
 <script>
-    import {expireCookie, getCookie, jwtToken} from "../../stores/cookie-store";
+    import {expireCookie, jwtToken} from "../../stores/cookie-store";
     import {onMount} from "svelte";
     import {base_url} from "../../stores/general-store";
+    import {navigate} from "svelte-navigator";
 
     // block page load until login has been verified
     let isAuth = false;
-    $: $jwtToken ? isAuth = true : window.location.assign('/authentication');
+    $: $jwtToken ? isAuth = true : navigate('/authentication');
 
     let isFetched = false
     let email, role, verified, created_date, emailSent = false;
@@ -16,7 +17,6 @@
 
         if (response.status !== 200) {
             expireCookie('jwt');
-            jwtToken
         }
 
         const data = await response.json();
@@ -34,8 +34,8 @@
         const response = await fetch(`${$base_url}/auth/request-verification-email`);
         const data = await response.json();
 
-        if (data.error) // only happens if user is already verified.
-            window.location.reload();
+        if (data.error) // should only happen if user is already verified.
+            navigate('/') // lazy error handling
 
         emailSent = true;
     }
@@ -71,7 +71,9 @@
 <style>
     .content {
         text-align: center;
-        margin-top: 20px;
+        margin: 20px 0;
+        padding: 20px 0;
+        background-color: white;
     }
 
     table {

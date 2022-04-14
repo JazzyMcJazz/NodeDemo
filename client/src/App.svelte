@@ -9,6 +9,10 @@
     import Profile from "./pages/Profile/Profile.svelte";
     import Course from "./pages/Course/Course.svelte";
     import Footer from "./components/Footer/Footer.svelte";
+    import Category from "./pages/Category/Category.svelte";
+    import NotFound from "./components/NotFound/NotFound.svelte";
+    import Basket from "./pages/Basket/Basket.svelte";
+    import Checkout from "./pages/Checkout/Checkout.svelte";
 
     let scrollY;
     const scrollTop = () => window.scrollTo({top: 0, left: 0, behavior: "smooth"});
@@ -27,12 +31,17 @@
     {#if scrollY > 250}
         <span id="auto-scroller" in:fade={{duration: 200}} out:fade on:click={scrollTop}><MdArrowDropUp/></span>
     {/if}
+
     <main use:swipe={swipeOptions} on:swipe={handleSwipe}>
         <Navbar bind:open/>
+        <Route component={NotFound}/>
         <Route path="/" component={Home}/>
         <Route path="/authentication" component={Auth}/>
-        <Route path="/profile" component={Profile}/>
+        <Route path="/basket" component={Basket}/>
+        <Route path="/categories/:id" component={Category}/>
         <Route path="/courses/:id" component={Course}/>
+        <Route path="/profile" component={Profile}/>
+        <Route path="/payment" component={Checkout}/>
     </main>
 
     <Footer/>

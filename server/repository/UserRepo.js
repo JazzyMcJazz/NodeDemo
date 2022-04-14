@@ -28,11 +28,11 @@ async function saveNewUser(user) {
     const values = Object.values(user);
 
     // prepare the '?'s for dynamic number of columns in the prepared statement
-    let psv = '';
-    keys.forEach(() => psv += '?, ');
-    psv = psv.slice(0, psv.length-2)
+    let prepared = '';
+    keys.forEach(() => prepared += '?,');
+    prepared = prepared.slice(0, prepared.length-1)
 
-    const sql = `INSERT INTO user (${keys}) VALUES (${psv})`;
+    const sql = `INSERT INTO user (${keys}) VALUES (${prepared})`;
     const stmt = await db.prepare(sql)
     await stmt.bind(values);
 

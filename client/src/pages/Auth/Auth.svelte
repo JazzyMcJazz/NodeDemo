@@ -1,10 +1,11 @@
 <script>
     import {base_url} from "../../stores/general-store";
     import {getCookie, jwtToken} from "../../stores/cookie-store";
+    import {navigate} from "svelte-navigator";
 
     // block page load until it's been verified user is not logged in
     let isLoggedIn = true;
-    $: $jwtToken ? window.location.assign('/') : isLoggedIn = false;
+    $: $jwtToken ? navigate('/') : isLoggedIn = false;
 
     let isLogin = true;
     let email = 'admin@test.dk';
@@ -59,10 +60,17 @@
 <style>
     .container {
         text-align: center;
+        background-color: white;
+        padding: 20px 0;
+        margin: 10px 0;
     }
 
     .error-message {
         color: #FF0000;
+    }
+
+    h2 {
+        margin: 0 0 20px 0;
     }
 
 </style>

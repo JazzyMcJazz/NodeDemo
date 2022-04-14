@@ -15,9 +15,14 @@ const router = Router();
 
 // All endpoint are preceded by /api/auth
 
+// Authenticates user
+router.get('/', authenticate, (req, res) => {
+    res.send();
+});
+
 router.post('/login', async (req, res) => {
     if (await checkUserCredentialsAndReturnUser(req.body)) {
-        res.cookie('jwt', issueToken(req.body), {expires: new Date(Date.now() + 604800000)});
+        res.cookie('jwt', issueToken(req.body), {expires: new Date(Date.now() + 604800000)}); // one week
         console.log(`[${new Date().toLocaleString()}] AUTH: ${req.body.email} logged in`)
         return res.send({message: `${req.body.email} successfully logged in`
     });

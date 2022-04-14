@@ -13,6 +13,7 @@
     const close = () => open = false;
 
     let categories = [];
+
     onMount(async () => {
        const response = await fetch(`${$base_url}/categories`);
        const data = await response.json();
@@ -61,7 +62,7 @@
             <div class="categories">
                 <h4>Categories</h4>
                 {#each categories as category}
-                    <Link to={`/categories/${category.title}`} on:click={close}>
+                    <Link to={`/categories/${category.id}`} on:click={close}>
                         <div class="category">
                             <div class="cat-title">{category.title}</div>
                             <div class="icon"><MdArrowForward/></div>
@@ -75,7 +76,7 @@
         </div>
         <div class="auth">
             {#if isAuthenticated}
-                <Link to="/profile"on:click={close}>
+                <Link to="/profile" on:click={close}>
                     <div class="cat-title white">Profile</div>
                 </Link>
                 <br>
@@ -141,15 +142,6 @@
     .left, .right {
         display: flex;
         align-items: center;
-    }
-
-    .cross1, .cross2 {
-        width: 1.2em;
-        height: 3px;
-        background-color: #f4f4f4;
-        position: absolute;
-        right: 10px;
-
     }
 
     .cross1 {

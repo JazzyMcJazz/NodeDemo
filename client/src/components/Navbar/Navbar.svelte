@@ -19,7 +19,7 @@
         <Link to="/"><div class="logo"><div>Kea Store</div></div></Link>
     </div>
     <div class="nav-section right">
-        <Link to="/"><div class="nav-icon"><MdShoppingCart/></div></Link>
+        <Link to="/basket"><div class="nav-icon"><MdShoppingCart/></div></Link>
         <Link to={isAuthorized ? '/profile' : '/authentication'}>
             <div class="nav-icon green"><MdAccountBox/></div>
         </Link>

@@ -11,6 +11,7 @@ import CategoryRouter from './routers/CategoryRouter.js';
 import express from 'express';
 import testRouter from "./routers/TestRouter.js";
 import UserRouter from "./routers/UserRouter.js";
+import {getCoursesById} from "./repository/CourseRepo.js";
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use(express.static(path.resolve('../client/public')));
 app.get('*', (req, res) => res.sendFile(path.resolve('../client/public/index.html')))
 
 app.use(testRouter)
+
 // if you change default port it must also be changed in ./router/AuthRouter.js:42:86
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, err => {
