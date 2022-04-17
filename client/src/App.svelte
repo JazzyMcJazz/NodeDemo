@@ -34,14 +34,14 @@
 
     <main use:swipe={swipeOptions} on:swipe={handleSwipe}>
         <Navbar bind:open/>
-        <Route component={NotFound}/>
-        <Route path="/" component={Home}/>
-        <Route path="/authentication" component={Auth}/>
-        <Route path="/basket" component={Basket}/>
-        <Route path="/categories/:id" component={Category}/>
-        <Route path="/courses/:id" component={Course}/>
-        <Route path="/profile" component={Profile}/>
-        <Route path="/payment" component={Checkout}/>
+        <Route><NotFound/></Route>
+        <Route path="/"><Home/></Route>
+        <Route path="/authentication"><Auth/></Route>
+        <Route path="/basket"><Basket/></Route>
+        <Route path="/categories/:id" let:params><Category id={params.id}/></Route>
+        <Route path="/courses/:id" let:params><Course id={params.id}/></Route>
+        <Route path="/profile"><Profile/></Route>
+        <Route path="/payment"><Checkout/></Route>
     </main>
 
     <Footer/>

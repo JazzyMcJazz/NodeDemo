@@ -11,7 +11,7 @@ import CategoryRouter from './routers/CategoryRouter.js';
 import express from 'express';
 import testRouter from "./routers/TestRouter.js";
 import UserRouter from "./routers/UserRouter.js";
-import {getCoursesById} from "./repository/CourseRepo.js";
+import PurchaseRouter from "./routers/PurchaseRouter.js";
 
 const app = express();
 
@@ -26,6 +26,7 @@ app.use('/api/auth', AuthRouter);
 app.use('/api/courses', CourseRouter);
 app.use('/api/categories', CategoryRouter);
 app.use('/api/users', UserRouter);
+app.use('/api/purchase', PurchaseRouter);
 
 app.use(express.static(path.resolve('../client/public')));
 app.get('*', (req, res) => res.sendFile(path.resolve('../client/public/index.html')))

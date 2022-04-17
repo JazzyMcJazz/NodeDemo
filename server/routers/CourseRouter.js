@@ -39,7 +39,7 @@ router.get('/basket', async (req, res) => {
     }
 
     res.send({data: basket});
-})
+});
 
 router.get('/most-popular', async (req, res) => {
     const amount = req.query.amount || 3;

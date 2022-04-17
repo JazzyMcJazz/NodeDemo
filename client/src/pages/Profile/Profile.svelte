@@ -9,8 +9,7 @@
     $: $jwtToken ? isAuth = true : navigate('/authentication');
 
     let isFetched = false
-    let email, role, verified, created_date, emailSent = false;
-    let verification_status;
+    let email, role, verified, created_date, emailSent = false, courses = [];
 
     onMount(async () => {
         const response = await fetch(`${$base_url}/users/self`);
@@ -26,6 +25,7 @@
         role = user.role;
         verified = user.verified;
         created_date = new Date(user.created_date).toLocaleDateString();
+        courses = user.courses;
 
         isFetched = true;
     });
@@ -47,6 +47,7 @@
 <!-- Prevent page from loading before authentication has been verified and data has been fetched -->
 {#if isAuth && isFetched}
     <div class="content">
+        <h3>User Information</h3>
         <table>
             <tbody>
                 <tr><td>Email:</td><td>{email}</td></tr>
@@ -57,10 +58,19 @@
                     {:else if emailSent}
                         no | email verification sent
                     {:else}
-                        no | <a on:click={sendEmailVerification}>send email verification</a>
+                        no | <span on:click={sendEmailVerification}>send email verification</span>
                     {/if}
                 </td></tr>
                 <tr><td>Account Created:</td><td>{created_date}</td></tr>
+            </tbody>
+        </table>
+        <br>
+        <h3>Courses Purchased</h3>
+        <table>
+            <tbody>
+                {#each courses as course}
+                    <tr><td>{course.title}</td></tr>
+                {/each}
             </tbody>
         </table>
 
@@ -87,5 +97,9 @@
 
     button {
         margin-top: 50px;
+    }
+
+    span {
+        color: #666666;
     }
 </style>

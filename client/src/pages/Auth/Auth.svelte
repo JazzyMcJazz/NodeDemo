@@ -1,13 +1,15 @@
 <script>
     import {base_url} from "../../stores/general-store";
     import {getCookie, jwtToken} from "../../stores/cookie-store";
-    import {navigate} from "svelte-navigator";
+    import {navigate, useLocation} from "svelte-navigator";
+
+    const location = useLocation();
 
     // block page load until it's been verified user is not logged in
     let isLoggedIn = true;
     $: $jwtToken ? navigate('/') : isLoggedIn = false;
 
-    let isLogin = true;
+    let isLogin = !$location.search.toString().includes('?newaccount=true');
     let email = 'admin@test.dk';
     let password = '1234';
 
@@ -40,6 +42,11 @@
         jwtToken.set(getCookie('jwt'));
     }
 
+    function toggleLoginOrSignup() {
+        isLogin = !isLogin;
+        isLogin ? navigate('/authentication') : navigate('/authentication?newaccount=true');
+    }
+
 </script>
 {#if !isLoggedIn}
     <div class="container">
@@ -53,7 +60,7 @@
             <br/>
             <button type="submit">{isLogin ? 'Login' : 'Create Account'}</button>
         </form>
-        <div>or <a on:click={() => isLogin = !isLogin}>{isLogin ? 'create account' : 'login'}</a></div>
+        <div>or <a on:click={toggleLoginOrSignup}>{isLogin ? 'create account' : 'login'}</a></div>
     </div>
 {/if}
 
